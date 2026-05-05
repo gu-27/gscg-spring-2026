@@ -1,0 +1,29 @@
+<nav id="site-nav">
+  <div class="nav-inner">
+
+    <a href="/" class="nav-logo">
+      <div class="nav-logo-mark">G</div>
+      <div class="nav-logo-text">
+        <span class="nav-logo-name">GSCG</span>
+        <span class="nav-logo-sub">Spring 2026</span>
+      </div>
+    </a>
+
+    <div class="nav-links">
+      {{ range .Site.Menus.main }}
+      <a href="{{ .URL }}">{{ .Name }}</a>
+      {{ end }}
+    </div>
+
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+
+  </div>
+</nav>
+
+<div class="nav-drawer" id="nav-drawer">
+  {{ range .Site.Menus.main }}
+  <a href="{{ .URL }}">{{ .Name }}</a>
+  {{ end }}
+</div>

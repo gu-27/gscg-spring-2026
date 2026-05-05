@@ -1,0 +1,15 @@
+{{ define "main" }}
+<section class="page-hero">
+  <div class="container page-hero-inner">
+    <span class="eyebrow eyebrow-light">GSCG Spring 2026</span>
+    <h1 class="display-lg">{{ .Title }}</h1>
+    {{ with .Description }}<p class="body-lg" style="margin-top:.75rem;">{{ . }}</p>{{ end }}
+  </div>
+</section>
+
+<section class="section bg-white">
+  <div class="container">
+    {{ .Content }}
+  </div>
+</section>
+{{ end }}
