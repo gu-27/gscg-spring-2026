@@ -1,4 +1,5 @@
-baseURL: "https://gscg-spring-2026.pages.dev/"
+baseURL: "https://gu-27.github.io/gscg-spring-2026/"
+publishDir: "docs"
 languageCode: "en-us"
 title: "GSCG — Spring 2026"
 
