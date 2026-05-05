@@ -18,18 +18,12 @@ menu:
     - name: Our Projects
       url: /projects/
       weight: 2
-    - name: The Trips
-      url: /trips/
+    - name: Season Highlights
+      url: /highlights/
       weight: 3
     - name: Student Reflections
       url: /reflections/
       weight: 4
-    - name: Season Highlights
-      url: /highlights/
-      weight: 5
-    - name: Looking Ahead
-      url: /looking-ahead/
-      weight: 6
 
 params:
   description: "Gonzaga Sport Consulting Group — Spring 2026 Semester Showcase"

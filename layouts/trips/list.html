@@ -1,0 +1,77 @@
+{{ define "styles" }}
+<style>
+  @media (max-width: 700px) {
+    .trips-grid { grid-template-columns: 1fr !important; }
+  }
+</style>
+{{ end }}
+
+{{ define "main" }}
+
+<section class="page-hero bg-navy">
+  <div class="container page-hero-inner">
+    <span class="eyebrow eyebrow-light">GSCG Spring 2026</span>
+    <h1 class="display-lg" style="color:white;">{{ .Title }}</h1>
+    {{ with .Description }}<p class="body-lg" style="color:rgba(255,255,255,.65);margin-top:.75rem;max-width:560px;">{{ . }}</p>{{ end }}
+  </div>
+</section>
+
+<section class="section bg-white">
+  <div class="container">
+
+    <div class="trips-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;max-width:1000px;margin:0 auto;">
+
+      <!-- Portland Card -->
+      <div class="card" style="padding:2.5rem 2rem;">
+        <span class="eyebrow">Spring 2026 · Portland, OR</span>
+        <h2 class="display-sm" style="margin-bottom:1rem;">Portland</h2>
+        <p class="body-md" style="color:var(--muted);margin-bottom:1.5rem;">
+          Seven students spent time in Portland across two visits — a full day at Nike World Headquarters in Beaverton with Gonzaga alumni Andrew and Hayley, and a mentorship session with alumna Torrey. Both experiences pushed students to think harder about who they want to become.
+        </p>
+        <div style="display:flex;flex-direction:column;gap:.5rem;">
+          <div style="display:flex;align-items:center;gap:.6rem;font-size:.88rem;color:var(--muted);">
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--red);flex-shrink:0;"></span>
+            Nike World Headquarters · Beaverton, OR
+          </div>
+          <div style="display:flex;align-items:center;gap:.6rem;font-size:.88rem;color:var(--muted);">
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--red);flex-shrink:0;"></span>
+            Torrey · Gonzaga Alumna · Portland, OR
+          </div>
+        </div>
+      </div>
+
+      <!-- Seattle Card -->
+      <div class="card" style="padding:2.5rem 2rem;">
+        <span class="eyebrow">Spring 2026 · Seattle, WA</span>
+        <h2 class="display-sm" style="margin-bottom:1rem;">Seattle</h2>
+        <p class="body-md" style="color:var(--muted);margin-bottom:1.5rem;">
+          Seven students spent two days in Seattle — going behind the scenes at Lumen Field with the Seattle Seahawks, then presenting a full semester of consulting work directly to the Seattle Mariners front office at T-Mobile Park.
+        </p>
+        <div style="display:flex;flex-direction:column;gap:.5rem;">
+          <div style="display:flex;align-items:center;gap:.6rem;font-size:.88rem;color:var(--muted);">
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--red);flex-shrink:0;"></span>
+            Seattle Seahawks · Lumen Field
+          </div>
+          <div style="display:flex;align-items:center;gap:.6rem;font-size:.88rem;color:var(--muted);">
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--red);flex-shrink:0;"></span>
+            Seattle Mariners · T-Mobile Park
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="text-align:center;margin-top:2.5rem;">
+      <a href="https://gu-27.github.io/GSCG-ThankYou-Supporters-2026/" target="_blank" rel="noopener" class="btn btn-primary">
+        View Thank-You Site ↗
+      </a>
+    </div>
+
+    {{ with .Content }}
+    <div style="max-width:700px;margin:3rem auto 0;">{{ . }}</div>
+    {{ end }}
+
+  </div>
+</section>
+
+{{ end }}

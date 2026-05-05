@@ -1,19 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Season Highlights — GSCG Spring 2026</title>
-  <meta name="description" content="A semester of milestones.">
-
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-  
-  <link rel="stylesheet" href="/css/main.css">
-  
+{{ define "styles" }}
 <style>
   .highlight-section { padding: var(--section-py) 0; }
   .highlight-section + .highlight-section { border-top: 1px solid var(--border); }
@@ -27,7 +12,7 @@
   .highlight-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--red); flex-shrink: 0; }
   .trip-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
 
-   
+  /* Photo collage */
   .collage {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -51,67 +36,21 @@
     .collage .tall  { grid-row: span 1; }
   }
 </style>
+{{ end }}
 
-</head>
-<body>
-
-  <nav id="site-nav">
-  <div class="nav-inner">
-
-    <a href="/" class="nav-logo">
-      <div class="nav-logo-mark">G</div>
-      <div class="nav-logo-text">
-        <span class="nav-logo-name">GSCG</span>
-        <span class="nav-logo-sub">Spring 2026</span>
-      </div>
-    </a>
-
-    <div class="nav-links">
-      
-      <a href="/">Home</a>
-      
-      <a href="/projects/">Our Projects</a>
-      
-      <a href="/highlights/">Season Highlights</a>
-      
-      <a href="/reflections/">Student Reflections</a>
-      
-    </div>
-
-    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-
-  </div>
-</nav>
-
-<div class="nav-drawer" id="nav-drawer">
-  
-  <a href="/">Home</a>
-  
-  <a href="/projects/">Our Projects</a>
-  
-  <a href="/highlights/">Season Highlights</a>
-  
-  <a href="/reflections/">Student Reflections</a>
-  
-</div>
-
-
-  <main>
-    
+{{ define "main" }}
 
 <section class="page-hero bg-navy">
   <div class="container page-hero-inner">
     <span class="eyebrow eyebrow-light">GSCG Spring 2026</span>
-    <h1 class="display-lg" style="color:white;">Season Highlights</h1>
-    <p class="body-lg" style="color:rgba(255,255,255,.65);margin-top:.75rem;max-width:560px;">A semester of milestones.</p>
+    <h1 class="display-lg" style="color:white;">{{ .Title }}</h1>
+    {{ with .Description }}<p class="body-lg" style="color:rgba(255,255,255,.65);margin-top:.75rem;max-width:560px;">{{ . }}</p>{{ end }}
   </div>
 </section>
 
 <div class="container">
 
-  
+  <!-- 1. THE TRIPS ───────────────────────────────── -->
   <div id="trips" class="highlight-section">
     <span class="eyebrow">The Trips</span>
     <h2 class="display-md" style="margin-bottom:.75rem;">Portland &amp; Seattle</h2>
@@ -119,23 +58,23 @@
       Eighteen students traveled across two cities — meeting with world-class organizations, presenting real consulting work, and growing in ways that only happen through experience.
     </p>
 
-    
+    <!-- Photo collage: 4-col grid, 2 rows -->
     <div class="collage">
-      
+      <!-- Portland group shot — wide -->
       <img class="span2" src="https://gu-27.github.io/gscg-photos/photos/portland/IMG_5537.JPG" alt="Portland trip group">
-      
+      <!-- Portland Nike visit -->
       <img src="https://gu-27.github.io/gscg-photos/photos/portland/IMG_5581.JPG" alt="Portland – Nike">
-      
+      <!-- Lumen Field -->
       <img src="https://gu-27.github.io/gscg-photos/photos/Lumens/IMG_5938.jpg" alt="Seattle – Lumen Field">
-      
+      <!-- Portland detail -->
       <img src="https://gu-27.github.io/gscg-photos/photos/portland/IMG_5609.JPG" alt="Portland visit">
-      
+      <!-- Mariners presentation — wide -->
       <img class="span2" src="https://gu-27.github.io/gscg-photos/photos/Mariners/IMG_6073.jpg" alt="Seattle – Mariners presentation">
-      
+      <!-- Lumen Field crowd -->
       <img src="https://gu-27.github.io/gscg-photos/photos/Lumens/IMG_5962.jpg" alt="Seattle – Lumen Field">
     </div>
 
-    
+    <!-- City cards -->
     <div class="trip-cards">
       <div class="card">
         <div class="highlight-pill"><span class="dot"></span>Portland, OR</div>
@@ -162,7 +101,7 @@
     </div>
   </div>
 
-  
+  <!-- 2. CASE COMPETITION ────────────────────────── -->
   <div id="case-comp" class="highlight-section">
     <span class="eyebrow">Case Competition</span>
     <h2 class="display-md" style="margin-bottom:.75rem;">Competing on the Biggest Stage</h2>
@@ -171,7 +110,7 @@
     </p>
   </div>
 
-  
+  <!-- 3. BOARD & UA PRESENTATION ─────────────────── -->
   <div id="presentations" class="highlight-section">
     <span class="eyebrow">Institutional Presentations</span>
     <h2 class="display-md" style="margin-bottom:.75rem;">Presenting to the Board &amp; University Administration</h2>
@@ -180,7 +119,7 @@
     </p>
   </div>
 
-  
+  <!-- 4. ASSOCIATES STRUCTURE ─────────────────────── -->
   <div id="associates" class="highlight-section">
     <span class="eyebrow">Organization</span>
     <h2 class="display-md" style="margin-bottom:.75rem;">Our Associates Structure</h2>
@@ -189,7 +128,7 @@
     </p>
   </div>
 
-  
+  <!-- 5. CLAUDE CODE ──────────────────────────────── -->
   <div class="highlight-section">
     <span class="eyebrow">Technology</span>
     <h2 class="display-md" style="margin-bottom:.75rem;">Our Use of Claude Code</h2>
@@ -198,7 +137,7 @@
     </p>
   </div>
 
-  
+  <!-- 6. ADVISORS ──────────────────────────────────── -->
   <div id="advisors" class="highlight-section">
     <span class="eyebrow">People Who Showed Up</span>
     <h2 class="display-md" style="margin-bottom:.5rem;">Our Advisors</h2>
@@ -237,50 +176,6 @@
     </div>
   </div>
 
-</div>
+</div><!-- /container -->
 
-
-  </main>
-
-  <footer id="site-footer">
-  <div class="container">
-    <div class="footer-inner">
-
-      <div class="footer-brand">
-        <div class="footer-logo-mark">G</div>
-        <div class="footer-name">Gonzaga Sport Consulting Group</div>
-        <div class="footer-tagline">Growing Through Sport<br>Spring 2026 Semester Showcase</div>
-        <div class="footer-social">
-          <a href="https://www.instagram.com/gonzagasportconsulting" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
-          <a href="https://www.linkedin.com/company/gonzaga-sport-consulting-group" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
-        </div>
-      </div>
-
-      <div class="footer-nav-col">
-        <h4>Navigate</h4>
-        <a href="/">Home</a>
-        <a href="/projects/">Our Projects</a>
-        <a href="/highlights/">Season Highlights</a>
-        <a href="/reflections/">Student Reflections</a>
-      </div>
-
-      <div class="footer-nav-col">
-        <h4>Thank You Cards</h4>
-        <a href="https://gu-27.github.io/GSCG-ThankYou-Supporters-2026/" target="_blank" rel="noopener">Spring 2026 Supporters ↗</a>
-      </div>
-
-    </div>
-
-    <div class="footer-bottom">
-      <span class="footer-copy">© 2026 Gonzaga Sport Consulting Group. All rights reserved.</span>
-      <span class="footer-copy" style="color:rgba(255,255,255,.2);">Gonzaga University · Spokane, WA</span>
-    </div>
-  </div>
-</footer>
-
-
-  <script src="/js/main.js"></script>
-  
-
-</body>
-</html>
+{{ end }}

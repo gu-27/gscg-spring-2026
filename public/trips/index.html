@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Trips — GSCG Spring 2026</title>
@@ -14,6 +14,12 @@
   
   <link rel="stylesheet" href="/css/main.css">
   
+<style>
+  @media (max-width: 700px) {
+    .trips-grid { grid-template-columns: 1fr !important; }
+  }
+</style>
+
 </head>
 <body>
 
@@ -34,13 +40,9 @@
       
       <a href="/projects/">Our Projects</a>
       
-      <a href="/trips/">The Trips</a>
-      
-      <a href="/reflections/">Student Reflections</a>
-      
       <a href="/highlights/">Season Highlights</a>
       
-      <a href="/looking-ahead/">Looking Ahead</a>
+      <a href="/reflections/">Student Reflections</a>
       
     </div>
 
@@ -57,32 +59,80 @@
   
   <a href="/projects/">Our Projects</a>
   
-  <a href="/trips/">The Trips</a>
-  
-  <a href="/reflections/">Student Reflections</a>
-  
   <a href="/highlights/">Season Highlights</a>
   
-  <a href="/looking-ahead/">Looking Ahead</a>
+  <a href="/reflections/">Student Reflections</a>
   
 </div>
 
 
   <main>
     
-<section class="page-hero">
+
+<section class="page-hero bg-navy">
   <div class="container page-hero-inner">
     <span class="eyebrow eyebrow-light">GSCG Spring 2026</span>
-    <h1 class="display-lg">The Trips</h1>
-    <p class="body-lg" style="margin-top:.75rem;">Portland and Seattle — two transformational trips.</p>
+    <h1 class="display-lg" style="color:white;">The Trips</h1>
+    <p class="body-lg" style="color:rgba(255,255,255,.65);margin-top:.75rem;max-width:560px;">Portland and Seattle — two transformational trips.</p>
   </div>
 </section>
 
 <section class="section bg-white">
   <div class="container">
+
+    <div class="trips-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;max-width:1000px;margin:0 auto;">
+
+      
+      <div class="card" style="padding:2.5rem 2rem;">
+        <span class="eyebrow">Spring 2026 · Portland, OR</span>
+        <h2 class="display-sm" style="margin-bottom:1rem;">Portland</h2>
+        <p class="body-md" style="color:var(--muted);margin-bottom:1.5rem;">
+          Seven students spent time in Portland across two visits — a full day at Nike World Headquarters in Beaverton with Gonzaga alumni Andrew and Hayley, and a mentorship session with alumna Torrey. Both experiences pushed students to think harder about who they want to become.
+        </p>
+        <div style="display:flex;flex-direction:column;gap:.5rem;">
+          <div style="display:flex;align-items:center;gap:.6rem;font-size:.88rem;color:var(--muted);">
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--red);flex-shrink:0;"></span>
+            Nike World Headquarters · Beaverton, OR
+          </div>
+          <div style="display:flex;align-items:center;gap:.6rem;font-size:.88rem;color:var(--muted);">
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--red);flex-shrink:0;"></span>
+            Torrey · Gonzaga Alumna · Portland, OR
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="card" style="padding:2.5rem 2rem;">
+        <span class="eyebrow">Spring 2026 · Seattle, WA</span>
+        <h2 class="display-sm" style="margin-bottom:1rem;">Seattle</h2>
+        <p class="body-md" style="color:var(--muted);margin-bottom:1.5rem;">
+          Seven students spent two days in Seattle — going behind the scenes at Lumen Field with the Seattle Seahawks, then presenting a full semester of consulting work directly to the Seattle Mariners front office at T-Mobile Park.
+        </p>
+        <div style="display:flex;flex-direction:column;gap:.5rem;">
+          <div style="display:flex;align-items:center;gap:.6rem;font-size:.88rem;color:var(--muted);">
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--red);flex-shrink:0;"></span>
+            Seattle Seahawks · Lumen Field
+          </div>
+          <div style="display:flex;align-items:center;gap:.6rem;font-size:.88rem;color:var(--muted);">
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--red);flex-shrink:0;"></span>
+            Seattle Mariners · T-Mobile Park
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="text-align:center;margin-top:2.5rem;">
+      <a href="https://gu-27.github.io/GSCG-ThankYou-Supporters-2026/" target="_blank" rel="noopener" class="btn btn-primary">
+        View Thank-You Site ↗
+      </a>
+    </div>
+
     
+
   </div>
 </section>
+
 
   </main>
 
@@ -101,22 +151,16 @@
       </div>
 
       <div class="footer-nav-col">
-        <h4>Newsletter</h4>
+        <h4>Navigate</h4>
         <a href="/">Home</a>
         <a href="/projects/">Our Projects</a>
-        <a href="/trips/">The Trips</a>
-        <a href="/reflections/">Student Reflections</a>
         <a href="/highlights/">Season Highlights</a>
-        <a href="/looking-ahead/">Looking Ahead</a>
+        <a href="/reflections/">Student Reflections</a>
       </div>
 
       <div class="footer-nav-col">
         <h4>Thank You Cards</h4>
-        <a href="#">Nike Visit ↗</a>
-        <a href="#">Torrey ↗</a>
-        <a href="#">Lumen Field ↗</a>
-        <a href="#">Mariners ↗</a>
-        <a href="#">Seattle Trip Supporter ↗</a>
+        <a href="https://gu-27.github.io/GSCG-ThankYou-Supporters-2026/" target="_blank" rel="noopener">Spring 2026 Supporters ↗</a>
       </div>
 
     </div>

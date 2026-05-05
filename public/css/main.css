@@ -13,8 +13,8 @@
   --red-lt:    #e8192e;
   --accent:    #e8edf5;
   --border:    #dde3ec;
-  --muted:     #6b7a8d;
-  --text:      #1a2535;
+  --muted:     #4a6080;
+  --text:      #041E42;
   --white:     #ffffff;
   --off-white: #f8fafc;
 
@@ -236,7 +236,8 @@ button { font-family: var(--font-body); cursor: pointer; border: none; backgroun
   box-shadow: 0 2px 24px rgba(0,0,0,.25);
 }
 #site-nav:not(.scrolled) {
-  background: transparent;
+  background: rgba(4,30,66,.85);
+  backdrop-filter: blur(8px);
 }
 
 .nav-inner {
