@@ -1,0 +1,5 @@
+name = "gscg-spring-2025"
+compatibility_date = "2026-01-01"
+
+[site]
+bucket = "./public"
