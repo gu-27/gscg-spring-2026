@@ -2,20 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://gscg-spring-2026.pages.dev/categories/</loc>
+    <loc>http://localhost:64869/gscg-spring-2026/categories/</loc>
   </url><url>
-    <loc>https://gscg-spring-2026.pages.dev/</loc>
+    <loc>http://localhost:64869/gscg-spring-2026/</loc>
   </url><url>
-    <loc>https://gscg-spring-2026.pages.dev/looking-ahead/</loc>
+    <loc>http://localhost:64869/gscg-spring-2026/looking-ahead/</loc>
   </url><url>
-    <loc>https://gscg-spring-2026.pages.dev/projects/</loc>
+    <loc>http://localhost:64869/gscg-spring-2026/projects/</loc>
   </url><url>
-    <loc>https://gscg-spring-2026.pages.dev/highlights/</loc>
+    <loc>http://localhost:64869/gscg-spring-2026/highlights/</loc>
   </url><url>
-    <loc>https://gscg-spring-2026.pages.dev/reflections/</loc>
+    <loc>http://localhost:64869/gscg-spring-2026/reflections/</loc>
   </url><url>
-    <loc>https://gscg-spring-2026.pages.dev/tags/</loc>
+    <loc>http://localhost:64869/gscg-spring-2026/tags/</loc>
   </url><url>
-    <loc>https://gscg-spring-2026.pages.dev/trips/</loc>
+    <loc>http://localhost:64869/gscg-spring-2026/trips/</loc>
   </url>
 </urlset>
