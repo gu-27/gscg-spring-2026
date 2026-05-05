@@ -1,6 +1,6 @@
-baseURL: "https://gscg-spring-2025.pages.dev/"
+baseURL: "https://gscg-spring-2026.pages.dev/"
 languageCode: "en-us"
-title: "GSCG — Spring 2025"
+title: "GSCG — Spring 2026"
 
 outputs:
   home:
@@ -32,5 +32,5 @@ menu:
       weight: 6
 
 params:
-  description: "Gonzaga Sport Consulting Group — Spring 2025 Semester Showcase"
+  description: "Gonzaga Sport Consulting Group — Spring 2026 Semester Showcase"
   tagline: "Growing Through Sport"
