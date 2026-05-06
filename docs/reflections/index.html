@@ -17,46 +17,6 @@
 </head>
 <body>
 
-
-<div id="pw-gate" style="display:none;position:fixed;inset:0;z-index:9999;background:#0f172a;display:flex;align-items:center;justify-content:center;">
-  <div style="background:white;border-radius:16px;padding:48px 40px;max-width:380px;width:90%;text-align:center;box-shadow:0 24px 64px rgba(0,0,0,0.4);">
-    <div style="font-size:32px;margin-bottom:8px;">🏟️</div>
-    <h2 style="font-family:'Outfit',sans-serif;font-size:20px;font-weight:700;color:#0f172a;margin:0 0 6px;">GSCG Spring 2026</h2>
-    <p style="font-family:'Outfit',sans-serif;font-size:14px;color:#64748b;margin:0 0 28px;">Enter the access code to continue.</p>
-    <input id="pw-input" type="password" placeholder="Access code" autocomplete="off"
-      style="width:100%;box-sizing:border-box;border:2px solid #e2e8f0;border-radius:8px;padding:12px 14px;font-size:15px;font-family:'Outfit',sans-serif;outline:none;margin-bottom:12px;transition:border-color .2s;"
-      onfocus="this.style.borderColor='#cc0000'" onblur="this.style.borderColor='#e2e8f0'">
-    <div id="pw-error" style="display:none;color:#cc0000;font-size:13px;font-family:'Outfit',sans-serif;margin-bottom:10px;">Incorrect code. Try again.</div>
-    <button onclick="gscgAuth()"
-      style="width:100%;background:#cc0000;color:white;border:none;border-radius:8px;padding:12px;font-size:15px;font-weight:600;font-family:'Outfit',sans-serif;cursor:pointer;">
-      Enter →
-    </button>
-  </div>
-</div>
-<script>
-  (function() {
-    var KEY = 'gscg_s26_auth';
-    var PW  = 'gonzaga2026';
-    if (sessionStorage.getItem(KEY) !== '1') {
-      document.getElementById('pw-gate').style.display = 'flex';
-    }
-    document.getElementById('pw-input').addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') gscgAuth();
-    });
-  })();
-  function gscgAuth() {
-    var val = document.getElementById('pw-input').value;
-    if (val === 'gonzaga2026') {
-      sessionStorage.setItem('gscg_s26_auth', '1');
-      document.getElementById('pw-gate').style.display = 'none';
-    } else {
-      document.getElementById('pw-error').style.display = 'block';
-      document.getElementById('pw-input').value = '';
-      document.getElementById('pw-input').focus();
-    }
-  }
-</script>
-
   <nav id="site-nav">
   <div class="nav-inner">
 
