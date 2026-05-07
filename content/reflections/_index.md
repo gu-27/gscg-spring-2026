@@ -1,4 +1,4 @@
 ---
 title: "Student Reflections"
-description: "Growth is at the heart of everything we do at GSCG."
+description: "In their own words — what the semester meant to the students who lived it."
 ---
