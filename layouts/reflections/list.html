@@ -11,10 +11,9 @@
 <div style="max-width:960px;margin:0 auto;padding:3rem 1.5rem 4rem;">
 
   <style>
-    .reflection-grid { columns: 3; column-gap: 1.25rem; }
-    .reflection-grid > * { break-inside: avoid; margin-bottom: 1.25rem; display: inline-block; width: 100%; }
-    @media(max-width:768px){ .reflection-grid { columns: 2; } }
-    @media(max-width:480px){ .reflection-grid { columns: 1; } }
+    .reflection-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.25rem; align-items:start; }
+    @media(max-width:768px){ .reflection-grid { grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:480px){ .reflection-grid { grid-template-columns:1fr; } }
   </style>
 
   <div class="reflection-grid">
