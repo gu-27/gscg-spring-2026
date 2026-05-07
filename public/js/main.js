@@ -60,6 +60,79 @@
   els.forEach(el => obs.observe(el));
 })();
 
+// ── IMAGE LIGHTBOX ─────────────────────────────────────
+(function () {
+  // Build overlay once
+  const overlay = document.createElement('div');
+  overlay.id = 'lb-overlay';
+  overlay.style.cssText = [
+    'display:none',
+    'position:fixed',
+    'inset:0',
+    'z-index:9999',
+    'background:rgba(0,0,0,.82)',
+    'align-items:center',
+    'justify-content:center',
+    'cursor:zoom-out',
+    'padding:2rem',
+    'backdrop-filter:blur(4px)',
+    '-webkit-backdrop-filter:blur(4px)',
+  ].join(';');
+
+  const img = document.createElement('img');
+  img.style.cssText = [
+    'max-width:92vw',
+    'max-height:90vh',
+    'object-fit:contain',
+    'border-radius:8px',
+    'box-shadow:0 24px 80px rgba(0,0,0,.6)',
+    'transition:transform .2s ease',
+    'pointer-events:none',
+  ].join(';');
+
+  overlay.appendChild(img);
+  document.body.appendChild(overlay);
+
+  // Close on click or Escape
+  overlay.addEventListener('click', close);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+
+  function open(src, alt) {
+    img.src  = src;
+    img.alt  = alt || '';
+    overlay.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+  function close() {
+    overlay.style.display = 'none';
+    document.body.style.overflow = '';
+    img.src = '';
+  }
+
+  // Wire up all content images (skip tiny logos/icons)
+  function wireImages() {
+    document.querySelectorAll('img').forEach(el => {
+      // Skip if already wired, or if it's a small decorative image
+      if (el.dataset.lbWired) return;
+      el.dataset.lbWired = '1';
+
+      const skip = el.closest('#site-nav') || el.closest('#site-footer') ||
+                   el.closest('.advisor-avatar') || el.naturalWidth < 80;
+      if (skip) return;
+
+      el.style.cursor = 'zoom-in';
+      el.addEventListener('click', e => {
+        e.stopPropagation();
+        open(el.src, el.alt);
+      });
+    });
+  }
+
+  // Wire on load and after any dynamic content
+  document.addEventListener('DOMContentLoaded', wireImages);
+  window.addEventListener('load', wireImages);
+})();
+
 // ── ANIMATED COUNTERS ──────────────────────────────────
 (function () {
   const counters = document.querySelectorAll('[data-count]');

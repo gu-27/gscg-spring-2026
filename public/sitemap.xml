@@ -2,20 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:64869/gscg-spring-2026/categories/</loc>
+    <loc>http://localhost:1313/gscg-spring-2026/categories/</loc>
   </url><url>
-    <loc>http://localhost:64869/gscg-spring-2026/</loc>
+    <loc>http://localhost:1313/gscg-spring-2026/</loc>
   </url><url>
-    <loc>http://localhost:64869/gscg-spring-2026/looking-ahead/</loc>
+    <loc>http://localhost:1313/gscg-spring-2026/looking-ahead/</loc>
   </url><url>
-    <loc>http://localhost:64869/gscg-spring-2026/projects/</loc>
+    <loc>http://localhost:1313/gscg-spring-2026/highlights/</loc>
   </url><url>
-    <loc>http://localhost:64869/gscg-spring-2026/highlights/</loc>
+    <loc>http://localhost:1313/gscg-spring-2026/reflections/</loc>
   </url><url>
-    <loc>http://localhost:64869/gscg-spring-2026/reflections/</loc>
+    <loc>http://localhost:1313/gscg-spring-2026/tags/</loc>
   </url><url>
-    <loc>http://localhost:64869/gscg-spring-2026/tags/</loc>
-  </url><url>
-    <loc>http://localhost:64869/gscg-spring-2026/trips/</loc>
+    <loc>http://localhost:1313/gscg-spring-2026/trips/</loc>
   </url>
 </urlset>
