@@ -37,12 +37,24 @@
     overflow: hidden;
     box-shadow: 0 8px 32px rgba(4,30,66,.10);
     aspect-ratio: 4/3;
+    position: relative;
+  }
+  .hl-photo-blur {
+    position: absolute;
+    inset: -12px;
+    background-size: cover;
+    background-position: center;
+    filter: blur(18px);
+    transform: scale(1.08);
+    opacity: .75;
   }
   .hl-photo img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     display: block;
+    position: relative;
+    z-index: 1;
   }
 
   @media (max-width: 860px) {
@@ -125,6 +137,7 @@
         </p>
       </div>
       <div class="hl-photo">
+        <div class="hl-photo-blur" style="background-image:url('{{ "img/logos/casecomp.png" | relURL }}')"></div>
         <img src="{{ "img/logos/casecomp.png" | relURL }}" alt="Case competition">
       </div>
     </div>
@@ -141,6 +154,7 @@
         </p>
       </div>
       <div class="hl-photo">
+        <div class="hl-photo-blur" style="background-image:url('{{ "img/logos/dna.png" | relURL }}')"></div>
         <img src="{{ "img/logos/dna.png" | relURL }}" alt="Board presentation">
       </div>
     </div>
@@ -157,6 +171,7 @@
         </p>
       </div>
       <div class="hl-photo">
+        <div class="hl-photo-blur" style="background-image:url('{{ "img/logos/org.png" | relURL }}')"></div>
         <img src="{{ "img/logos/org.png" | relURL }}" alt="Associates org structure">
       </div>
     </div>
@@ -173,6 +188,7 @@
         </p>
       </div>
       <div class="hl-photo">
+        <div class="hl-photo-blur" style="background-image:url('{{ "img/logos/dashboard.png" | relURL }}')"></div>
         <img src="{{ "img/logos/dashboard.png" | relURL }}" alt="GSCG strategy dashboard">
       </div>
     </div>
@@ -189,47 +205,9 @@
         </p>
       </div>
       <div class="hl-photo">
+        <div class="hl-photo-blur" style="background-image:url('{{ "img/logos/virtual-social.png" | relURL }}')"></div>
         <img src="{{ "img/logos/virtual-social.png" | relURL }}" alt="Virtual advisory board social">
       </div>
-    </div>
-  </div>
-
-  <!-- 7. ADVISORS ──────────────────────────────────── -->
-  <div id="advisors" class="highlight-section">
-    <span class="eyebrow">People Who Showed Up</span>
-    <h2 class="display-md" style="margin-bottom:.5rem;">Our Advisors</h2>
-    <p class="body-md" style="color:var(--muted);max-width:560px;margin-bottom:2rem;">
-      Industry professionals who gave their time, candor, and expertise to push our students further.
-    </p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.25rem;">
-
-      <div class="card" style="text-align:center;padding:1.5rem 1rem;">
-        <div style="width:56px;height:56px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:1.2rem;font-weight:700;color:var(--navy);margin:0 auto .9rem;">A</div>
-        <div style="font-weight:700;color:var(--navy);font-size:.9rem;">Advisor Name</div>
-        <div style="font-size:.78rem;color:var(--muted);margin-top:.2rem;line-height:1.5;">Title · Organization</div>
-      </div>
-
-      <div class="card" style="text-align:center;padding:1.5rem 1rem;">
-        <div style="width:56px;height:56px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:1.2rem;font-weight:700;color:var(--navy);margin:0 auto .9rem;">B</div>
-        <div style="font-weight:700;color:var(--navy);font-size:.9rem;">Advisor Name</div>
-        <div style="font-size:.78rem;color:var(--muted);margin-top:.2rem;line-height:1.5;">Title · Organization</div>
-      </div>
-
-      <div class="card" style="text-align:center;padding:1.5rem 1rem;">
-        <div style="width:56px;height:56px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:1.2rem;font-weight:700;color:var(--navy);margin:0 auto .9rem;">C</div>
-        <div style="font-weight:700;color:var(--navy);font-size:.9rem;">Advisor Name</div>
-        <div style="font-size:.78rem;color:var(--muted);margin-top:.2rem;line-height:1.5;">Title · Organization</div>
-      </div>
-
-      <div class="card" style="text-align:center;padding:1.5rem 1rem;">
-        <div style="width:56px;height:56px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:1.2rem;font-weight:700;color:var(--navy);margin:0 auto .9rem;">D</div>
-        <div style="font-weight:700;color:var(--navy);font-size:.9rem;">Advisor Name</div>
-        <div style="font-size:.78rem;color:var(--muted);margin-top:.2rem;line-height:1.5;">Title · Organization</div>
-      </div>
-
-    </div>
-    <div style="margin-top:1.5rem;">
-      <a href="{{ "projects/#advisors" | relURL }}" class="btn btn-outline-dark">Full Advisor List →</a>
     </div>
   </div>
 
