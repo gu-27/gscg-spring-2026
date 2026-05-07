@@ -312,11 +312,12 @@
     min-width:140px;flex:0 1 160px;
   }
   .ty-avatar {
-    width:44px;height:44px;border-radius:50%;background:rgba(200,16,46,.25);
-    border:1px solid rgba(200,16,46,.35);display:flex;align-items:center;justify-content:center;
+    width:72px;height:72px;border-radius:50%;background:rgba(200,16,46,.25);
+    border:2px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;
     font-family:var(--font-display);font-size:1rem;font-weight:700;color:rgba(255,255,255,.7);
-    margin:0 auto .65rem;
+    margin:0 auto .75rem;overflow:hidden;flex-shrink:0;
   }
+  .ty-avatar img { width:100%;height:100%;object-fit:cover;object-position:center top; }
   .ty-name { font-size:.82rem;font-weight:600;color:white;line-height:1.3; }
   .ty-role { font-size:.72rem;color:rgba(255,255,255,.45);margin-top:.2rem;line-height:1.4; }
 </style>
@@ -333,8 +334,16 @@
     <div class="ty-group">
       <div class="ty-group-label">Project Advisors</div>
       <div class="ty-cards">
-        <div class="ty-card"><div class="ty-avatar">A</div><div class="ty-name">Advisor Name</div><div class="ty-role">Title · Organization</div></div>
-        <div class="ty-card"><div class="ty-avatar">B</div><div class="ty-name">Advisor Name</div><div class="ty-role">Title · Organization</div></div>
+        <div class="ty-card">
+          <div class="ty-avatar"><img src="/gscg-spring-2026/img/advisors/correia.jpg" alt="John Correia"></div>
+          <div class="ty-name">John Correia</div>
+          <div class="ty-role">Associate Professor, MIS · Faculty Director</div>
+        </div>
+        <div class="ty-card">
+          <div class="ty-avatar"><img src="/gscg-spring-2026/img/advisors/loroz.jpg" alt="Dr. Peggy Sue Loroz"></div>
+          <div class="ty-name">Dr. Peggy Sue Loroz</div>
+          <div class="ty-role">Professor of Marketing · Faculty Athletics Representative</div>
+        </div>
       </div>
     </div>
 
@@ -342,10 +351,26 @@
     <div class="ty-group">
       <div class="ty-group-label">Presentation Advisors</div>
       <div class="ty-cards">
-        <div class="ty-card"><div class="ty-avatar">A</div><div class="ty-name">Advisor Name</div><div class="ty-role">Title · Organization</div></div>
-        <div class="ty-card"><div class="ty-avatar">B</div><div class="ty-name">Advisor Name</div><div class="ty-role">Title · Organization</div></div>
-        <div class="ty-card"><div class="ty-avatar">C</div><div class="ty-name">Advisor Name</div><div class="ty-role">Title · Organization</div></div>
-        <div class="ty-card"><div class="ty-avatar">D</div><div class="ty-name">Advisor Name</div><div class="ty-role">Title · Organization</div></div>
+        <div class="ty-card">
+          <div class="ty-avatar"><img src="/gscg-spring-2026/img/advisors/reese.jpg" alt="Ed Reese"></div>
+          <div class="ty-name">Ed Reese</div>
+          <div class="ty-role">Executive in Residence</div>
+        </div>
+        <div class="ty-card">
+          <div class="ty-avatar"><img src="/gscg-spring-2026/img/advisors/lafferty.jpg" alt="Tyler Lafferty"></div>
+          <div class="ty-name">Tyler Lafferty</div>
+          <div class="ty-role">Founder · Strategy Labs, SevenTwo, 14Four &amp; Slingshot</div>
+        </div>
+        <div class="ty-card">
+          <div class="ty-avatar"><img src="/gscg-spring-2026/img/advisors/smith.jpg" alt="Joe Smith"></div>
+          <div class="ty-name">Joe Smith</div>
+          <div class="ty-role">Head of Brand &amp; Experience Marketing · Truist Bank</div>
+        </div>
+        <div class="ty-card">
+          <div class="ty-avatar"><img src="/gscg-spring-2026/img/advisors/mcquilkin.jpg" alt="Kevin McQuilkin"></div>
+          <div class="ty-name">Kevin McQuilkin</div>
+          <div class="ty-role">Executive in Residence · Trustee</div>
+        </div>
       </div>
     </div>
 
