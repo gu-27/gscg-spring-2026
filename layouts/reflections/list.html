@@ -9,9 +9,10 @@
   </div>
 
   <style>
-    .reflection-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.25rem; }
-    @media(max-width:768px){ .reflection-grid { grid-template-columns:repeat(2,1fr); } }
-    @media(max-width:480px){ .reflection-grid { grid-template-columns:1fr; } }
+    .reflection-grid { columns: 3; column-gap: 1.25rem; }
+    .reflection-grid > * { break-inside: avoid; margin-bottom: 1.25rem; display: inline-block; width: 100%; }
+    @media(max-width:768px){ .reflection-grid { columns: 2; } }
+    @media(max-width:480px){ .reflection-grid { columns: 1; } }
   </style>
   <div class="reflection-grid">
     {{ range .Site.Data.reflections }}

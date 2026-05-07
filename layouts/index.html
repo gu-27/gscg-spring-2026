@@ -10,25 +10,31 @@
   justify-content: center;
   position: relative;
   overflow: hidden;
-  padding: calc(var(--nav-h) + 3rem) 2rem 4rem;
-  text-align: center;
+  padding: calc(var(--nav-h) + 3rem) clamp(1.5rem,5vw,4rem) 4rem;
 ">
-  <!-- Subtle radial glow -->
   <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 40%, rgba(200,16,46,.13) 0%, transparent 70%);pointer-events:none;"></div>
-  <!-- Red accent line at top -->
   <div style="position:absolute;top:0;left:0;right:0;height:4px;background:var(--red);"></div>
 
-  <div style="position:relative;z-index:1;max-width:700px;margin:0 auto;">
-    <!-- Banner graphic -->
-    <img
-      src="{{ "img/logos/gscgspring2026.png" | relURL }}"
-      alt="GSCG Spring 2026"
-      style="max-width:min(480px,90vw);width:100%;margin:0 auto 2.5rem;display:block;"
-    >
-    <p class="body-lg" style="color:rgba(255,255,255,.72);max-width:500px;margin:0 auto 2.5rem;line-height:1.8;">
-      Five client projects. Two transformational trips.<br>One community growing through sport.
-    </p>
-    <a href="#letter" class="btn btn-primary">Explore the Semester ↓</a>
+  <div style="position:relative;z-index:1;width:100%;max-width:1100px;margin:0 auto;">
+    <!-- Side-by-side: spring photo left, GSCG banner right -->
+    <div style="display:flex;align-items:center;justify-content:center;gap:clamp(2rem,5vw,5rem);flex-wrap:wrap;margin-bottom:2.5rem;">
+      <img
+        src="{{ "img/logos/gscgspring2026.png" | relURL }}"
+        alt="GSCG Spring 2026"
+        style="width:min(560px,90vw);flex:1 1 320px;"
+      >
+      <img
+        src="{{ "img/logos/GSCG.png" | relURL }}"
+        alt="GSCG"
+        style="width:min(420px,80vw);flex:1 1 260px;"
+      >
+    </div>
+    <div style="text-align:center;">
+      <p class="body-lg" style="color:rgba(255,255,255,.72);max-width:520px;margin:0 auto 2.5rem;line-height:1.8;font-family:var(--font-display);font-style:italic;">
+        A community growing through sport and Jesuit values.
+      </p>
+      <a href="#letter" class="btn btn-primary">Explore the Semester ↓</a>
+    </div>
   </div>
 </section>
 
