@@ -2,7 +2,6 @@
 <style>
   .highlight-section { padding: var(--section-py) 0; }
   .highlight-section + .highlight-section { border-top: 1px solid var(--border); }
-  .highlight-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
   .highlight-pill {
     display: inline-flex; align-items: center; gap: .5rem;
     font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
@@ -26,8 +25,30 @@
   .collage .span2 { grid-column: span 2; }
   .collage .tall  { grid-row:    span 2; }
 
-  @media (max-width: 700px) {
-    .highlight-grid, .trip-cards { grid-template-columns: 1fr; }
+  /* Two-column highlight layout */
+  .hl-row {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 3rem;
+    align-items: center;
+  }
+  .hl-photo {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(4,30,66,.10);
+    aspect-ratio: 4/3;
+  }
+  .hl-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  @media (max-width: 860px) {
+    .hl-row { grid-template-columns: 1fr; }
+    .hl-photo { max-width: 480px; }
+    .trip-cards { grid-template-columns: 1fr; }
     .collage {
       grid-template-columns: 1fr 1fr;
       grid-template-rows: repeat(4, 160px);
@@ -58,23 +79,15 @@
       Eighteen students traveled across two cities — meeting with world-class organizations, presenting real consulting work, and growing in ways that only happen through experience.
     </p>
 
-    <!-- Photo collage: 4-col grid, 2 rows -->
     <div class="collage">
-      <!-- Portland group shot — wide -->
       <img class="span2" src="https://gu-27.github.io/gscg-photos/photos/portland/IMG_5537.JPG" alt="Portland trip group">
-      <!-- Portland Nike visit -->
       <img src="https://gu-27.github.io/gscg-photos/photos/portland/IMG_5581.JPG" alt="Portland – Nike">
-      <!-- Lumen Field -->
       <img src="https://gu-27.github.io/gscg-photos/photos/Lumens/IMG_5938.jpg" alt="Seattle – Lumen Field">
-      <!-- Portland detail -->
       <img src="https://gu-27.github.io/gscg-photos/photos/portland/IMG_5609.JPG" alt="Portland visit">
-      <!-- Mariners presentation — wide -->
       <img class="span2" src="https://gu-27.github.io/gscg-photos/photos/Mariners/IMG_6073.jpg" alt="Seattle – Mariners presentation">
-      <!-- Lumen Field crowd -->
       <img src="https://gu-27.github.io/gscg-photos/photos/Lumens/IMG_5962.jpg" alt="Seattle – Lumen Field">
     </div>
 
-    <!-- City cards -->
     <div class="trip-cards">
       <div class="card">
         <div class="highlight-pill"><span class="dot"></span>Portland, OR</div>
@@ -97,47 +110,91 @@
     </div>
 
     <div style="margin-top:1.75rem;">
-      <a href="https://gu-27.github.io/GSCG-ThankYou-Supporters-2026/" target="_blank" rel="noopener" class="btn btn-primary">Visit Thank-You & Student Reflection Site ↗</a>
+      <a href="https://gu-27.github.io/GSCG-ThankYou-Supporters-2026/" target="_blank" rel="noopener" class="btn btn-primary">Visit Thank-You &amp; Student Reflection Site ↗</a>
     </div>
   </div>
 
   <!-- 2. CASE COMPETITION ────────────────────────── -->
   <div id="case-comp" class="highlight-section">
-    <span class="eyebrow">Case Competition</span>
-    <h2 class="display-md" style="margin-bottom:.75rem;">Competing on the Biggest Stage</h2>
-    <p class="body-md" style="color:var(--muted);max-width:620px;">
-      GSCG students competed in case competitions this spring, putting analytical skills and strategic thinking to the test under pressure — representing Gonzaga against top programs.
-    </p>
+    <div class="hl-row">
+      <div>
+        <span class="eyebrow">Case Competition</span>
+        <h2 class="display-md" style="margin-bottom:.75rem;">Competing on the Biggest Stage</h2>
+        <p class="body-md" style="color:var(--muted);">
+          GSCG students competed in case competitions this spring, putting analytical skills and strategic thinking to the test under pressure — representing Gonzaga against top programs.
+        </p>
+      </div>
+      <div class="hl-photo">
+        <img src="{{ "img/logos/casecomp.png" | relURL }}" alt="Case competition">
+      </div>
+    </div>
   </div>
 
   <!-- 3. BOARD & UA PRESENTATION ─────────────────── -->
   <div id="presentations" class="highlight-section">
-    <span class="eyebrow">Institutional Presentations</span>
-    <h2 class="display-md" style="margin-bottom:.75rem;">Presenting to the Board &amp; University Administration</h2>
-    <p class="body-md" style="color:var(--muted);max-width:620px;">
-      For the first time, GSCG presented its work directly to university leadership — sharing the semester's consulting outcomes, trip impacts, and the group's trajectory as a formal student organization.
-    </p>
+    <div class="hl-row">
+      <div>
+        <span class="eyebrow">Institutional Presentations</span>
+        <h2 class="display-md" style="margin-bottom:.75rem;">Presenting to the Board &amp; University Administration</h2>
+        <p class="body-md" style="color:var(--muted);">
+          For the first time, GSCG presented its work directly to university leadership — sharing the semester's consulting outcomes, trip impacts, and the group's trajectory as a formal student organization.
+        </p>
+      </div>
+      <div class="hl-photo">
+        <img src="{{ "img/logos/dna.png" | relURL }}" alt="Board presentation">
+      </div>
+    </div>
   </div>
 
   <!-- 4. ASSOCIATES STRUCTURE ─────────────────────── -->
   <div id="associates" class="highlight-section">
-    <span class="eyebrow">Organization</span>
-    <h2 class="display-md" style="margin-bottom:.75rem;">Our Associates Structure</h2>
-    <p class="body-md" style="color:var(--muted);max-width:620px;">
-      This spring GSCG formalized its internal structure with a dedicated Associates tier — creating a clear pathway for members to grow from associate to full consultant, building depth and continuity across semesters.
-    </p>
+    <div class="hl-row">
+      <div>
+        <span class="eyebrow">Organization</span>
+        <h2 class="display-md" style="margin-bottom:.75rem;">Our Associates Structure</h2>
+        <p class="body-md" style="color:var(--muted);">
+          This spring GSCG formalized its internal structure with a dedicated Associates tier — creating a clear pathway for members to grow from associate to full consultant, building depth and continuity across semesters.
+        </p>
+      </div>
+      <div class="hl-photo">
+        <img src="{{ "img/logos/org.png" | relURL }}" alt="Associates org structure">
+      </div>
+    </div>
   </div>
 
   <!-- 5. CLAUDE CODE ──────────────────────────────── -->
   <div class="highlight-section">
-    <span class="eyebrow">Technology</span>
-    <h2 class="display-md" style="margin-bottom:.75rem;">Our Use of Claude Code</h2>
-    <p class="body-md" style="color:var(--muted);max-width:620px;">
-      GSCG leaned into AI-assisted development this semester — using Claude Code to build client deliverables, design this recap site, and produce the thank-you sites for Portland and Seattle supporters. It became a genuine part of how the group works.
-    </p>
+    <div class="hl-row">
+      <div>
+        <span class="eyebrow">Technology</span>
+        <h2 class="display-md" style="margin-bottom:.75rem;">Our Use of Claude Code</h2>
+        <p class="body-md" style="color:var(--muted);">
+          GSCG leaned into AI-assisted development this semester — using Claude Code to build client deliverables, design this recap site, and produce the thank-you sites for Portland and Seattle supporters. It became a genuine part of how the group works.
+        </p>
+      </div>
+      <div class="hl-photo">
+        <img src="{{ "img/logos/dashboard.png" | relURL }}" alt="GSCG strategy dashboard">
+      </div>
+    </div>
   </div>
 
-  <!-- 6. ADVISORS ──────────────────────────────────── -->
+  <!-- 6. ADVISORY BOARD ENGAGEMENT ───────────────── -->
+  <div id="advisory-board" class="highlight-section">
+    <div class="hl-row">
+      <div>
+        <span class="eyebrow">Advisory Board</span>
+        <h2 class="display-md" style="margin-bottom:.75rem;">Advisory Board Engagement</h2>
+        <p class="body-md" style="color:var(--muted);">
+          The GSCG Advisory Board met several times this semester to strategize next steps for the organization — offering guidance on structure, client selection, and long-term growth. The group also hosted a virtual social, bringing together advisors and students in an informal setting to build relationships across the network.
+        </p>
+      </div>
+      <div class="hl-photo">
+        <img src="{{ "img/logos/virtual-social.png" | relURL }}" alt="Virtual advisory board social">
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. ADVISORS ──────────────────────────────────── -->
   <div id="advisors" class="highlight-section">
     <span class="eyebrow">People Who Showed Up</span>
     <h2 class="display-md" style="margin-bottom:.5rem;">Our Advisors</h2>
