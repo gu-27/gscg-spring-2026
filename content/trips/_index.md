@@ -1,4 +1,4 @@
 ---
 title: "The Trips"
-description: "Portland and Seattle — two transformational trips."
+description: "Portland and Seattle, two transformational trips."
 ---
