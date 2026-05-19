@@ -57,6 +57,117 @@
     z-index: 1;
   }
 
+  /* Read More link */
+  .btn-read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+    margin-top: 1.1rem;
+    font-size: .88rem;
+    font-weight: 700;
+    color: var(--red);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    letter-spacing: .01em;
+    transition: opacity .15s;
+    font-family: inherit;
+  }
+  .btn-read-more:hover { opacity: .7; }
+  .btn-read-more svg { width: 13px; height: 13px; }
+
+  /* Modal Overlay */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(4,30,66,.55);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+  }
+  .modal-overlay.open { display: flex; }
+
+  /* Modal Box */
+  .modal-box {
+    background: white;
+    border-radius: 20px;
+    max-width: 640px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 24px 64px rgba(4,30,66,.22);
+    position: relative;
+    animation: modalIn .2s ease;
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: translateY(12px) scale(.98); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .modal-header {
+    padding: 2rem 2rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: white;
+    border-radius: 20px 20px 0 0;
+    z-index: 1;
+  }
+  .modal-pill {
+    display: inline-flex; align-items: center; gap: .5rem;
+    font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+    background: var(--accent); color: var(--navy);
+    border-radius: 100px; padding: .3rem .8rem; margin-bottom: .75rem;
+  }
+  .modal-pill .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--red); flex-shrink: 0; }
+  .modal-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.2;
+    margin: 0;
+  }
+  .modal-close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: white;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    color: var(--muted);
+    transition: all .15s;
+    line-height: 1;
+  }
+  .modal-close:hover { background: var(--border); color: var(--navy); }
+  .modal-body { padding: 1.5rem 2rem 2rem; }
+  .modal-body p {
+    font-size: .93rem;
+    line-height: 1.8;
+    color: #374151;
+    margin-bottom: 1rem;
+  }
+  .modal-body p:last-child { margin-bottom: 0; }
+  .modal-detail-row {
+    display: flex;
+    flex-direction: column;
+    gap: .35rem;
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+  }
+  .modal-detail-row span {
+    font-size: .83rem;
+    color: var(--muted);
+  }
+
   @media (max-width: 860px) {
     .hl-row { grid-template-columns: 1fr; }
     .hl-photo { max-width: 480px; }
@@ -67,6 +178,8 @@
     }
     .collage .span2 { grid-column: span 2; }
     .collage .tall  { grid-row: span 1; }
+    .modal-header { padding: 1.5rem 1.5rem 1rem; }
+    .modal-body { padding: 1.25rem 1.5rem 1.5rem; }
   }
 </style>
 {{ end }}
@@ -109,6 +222,10 @@
           <div style="font-size:.85rem;color:var(--muted);">→ Nike World Headquarters · Beaverton, OR</div>
           <div style="font-size:.85rem;color:var(--muted);">→ Torrey · Gonzaga Alumna</div>
         </div>
+        <button class="btn-read-more" onclick="openModal('modal-portland')">
+          Read More
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </button>
       </div>
       <div class="card">
         <div class="highlight-pill"><span class="dot"></span>Seattle, WA</div>
@@ -118,6 +235,10 @@
           <div style="font-size:.85rem;color:var(--muted);">→ Seattle Seahawks · Lumen Field</div>
           <div style="font-size:.85rem;color:var(--muted);">→ Seattle Mariners · T-Mobile Park</div>
         </div>
+        <button class="btn-read-more" onclick="openModal('modal-seattle')">
+          Read More
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </button>
       </div>
     </div>
 
@@ -135,6 +256,10 @@
         <p class="body-md" style="color:var(--muted);">
           GSCG students competed in case competitions this spring, putting analytical skills and strategic thinking to the test under pressure — representing Gonzaga against top programs.
         </p>
+        <button class="btn-read-more" onclick="openModal('modal-casecomp')">
+          Read More
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </button>
       </div>
       <div class="hl-photo">
         <div class="hl-photo-blur" style="background-image:url('{{ "img/logos/casecomp.png" | relURL }}')"></div>
@@ -169,6 +294,10 @@
         <p class="body-md" style="color:var(--muted);">
           This spring GSCG formalized its internal structure with a dedicated Associates tier — creating a clear pathway for members to grow from associate to full consultant, building depth and continuity across semesters.
         </p>
+        <button class="btn-read-more" onclick="openModal('modal-associates')">
+          Read More
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </button>
       </div>
       <div class="hl-photo">
         <div class="hl-photo-blur" style="background-image:url('{{ "img/logos/org.png" | relURL }}')"></div>
@@ -213,4 +342,121 @@
 
 </div><!-- /container -->
 
+<!-- ========== MODALS ========== -->
+
+<!-- Portland Modal -->
+<div class="modal-overlay" id="modal-portland" onclick="handleOverlayClick(event, 'modal-portland')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-pill"><span class="dot"></span>Portland, OR</div>
+      <h2 class="modal-title">The Portland Trip</h2>
+      <button class="modal-close" onclick="closeModal('modal-portland')" aria-label="Close">&#10005;</button>
+    </div>
+    <div class="modal-body">
+      <p>The Portland team flew out to present their midpoint work to the Trail Blazers at the Moda Center, then toured the arena and got a closer look at their premium spaces — insights that directly shaped the direction of our final presentation.</p>
+      <p>From there, the group headed to Nike World Headquarters in Beaverton, where Gonzaga alumni Andrew and Hayley welcomed us and shared their journeys from Gonzaga into the sports and business world. Hearing how former Zags navigated their paths — the pivots, the opportunities, the hard lessons — made the experience feel both inspiring and genuinely practical.</p>
+      <p>The trip closed with a candid conversation with alumna Torrey, who offered a broader perspective on professional growth from outside the consulting world. We came away with a deeper understanding of what it means to stay adaptable, maintain a competitive edge, and show up fully in roles that look different from what you expected.</p>
+      <p>More than the individual stops, what stood out was how the trip deepened our sense of unity as a team. The shared experience of traveling, presenting, and learning together created something that's hard to replicate in a classroom — and something we'll carry with us long after the semester ends.</p>
+      <div class="modal-detail-row">
+        <span>→ Moda Center · Portland Trail Blazers Midpoint Presentation</span>
+        <span>→ Nike World Headquarters · Beaverton, OR</span>
+        <span>→ Torrey · Gonzaga Alumna</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Seattle Modal -->
+<div class="modal-overlay" id="modal-seattle" onclick="handleOverlayClick(event, 'modal-seattle')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-pill"><span class="dot"></span>Seattle, WA</div>
+      <h2 class="modal-title">The Seattle Trip</h2>
+      <button class="modal-close" onclick="closeModal('modal-seattle')" aria-label="Close">&#10005;</button>
+    </div>
+    <div class="modal-body">
+      <p>The Seattle trip was a true combination of everything we'd worked toward all semester. It started Tuesday morning at Pike Place — grabbing breakfast together as a group before the big day, a simple moment that helped everyone settle in and reconnect before things got real.</p>
+      <p>From there, we headed to Lumen Field, where advisory member Michael and Lisa welcomed us with a full stadium tour and took time to share their journeys in the sports industry. One theme kept surfacing: you never stop learning. Lisa described how a colleague helped her learn Tableau, which helped her carve out a niche role — a perfect example of the kind of peer support we try to build within GSCG. After the tour, Michael sat in on a run-through of our Mariners presentation and gave us feedback we genuinely couldn't have found on our own. That kind of real-world perspective is hard to come by, and it meant a lot.</p>
+      <p>We grabbed a quick lunch at Hatback across the street, made some last-minute adjustments, and made our way over to T-Mobile Park. Francis, who had been guiding our work throughout the semester, was there along with Amanda and Jaron, who gave us a tour of parts of the stadium we hadn't yet explored. Finally meeting everyone in person after months of collaboration made the whole experience feel full-circle.</p>
+      <p>The panel discussion was one of the highlights — more conversational than most panels, offering a genuine look at what careers in sports actually look like across a wide range of roles. Francis mentioned that much of her day-to-day is filled with challenges, and those are the things she celebrates most. That perspective hit close to home for GSCG, where we push ourselves into hard things on purpose.</p>
+      <p>Batting practice was probably where we had the most fun as a group — on the field, in the dugout, taking photos. It's the kind of moment you don't forget.</p>
+      <p>The presentation itself covered SEA Change, ballpark segmentation, and theme night breakdowns. Shoutout to Eamon and Marcus — the Claude AI dashboards they built were genuinely impressive and drew a lot of attention in the room. Hearing afterward that the Mariners had independently identified many of the same things we had was one of the most validating moments of the semester. And learning that they wanted to continue engaging with GSCG? That made everything worth it.</p>
+      <div class="modal-detail-row">
+        <span>→ Lumen Field · Seattle Seahawks</span>
+        <span>→ T-Mobile Park · Seattle Mariners Front Office Presentation</span>
+        <span>→ SEA Change · Ballpark Segmentation · Theme Night Breakdown</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Case Competition Modal -->
+<div class="modal-overlay" id="modal-casecomp" onclick="handleOverlayClick(event, 'modal-casecomp')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-pill"><span class="dot"></span>Case Competition</div>
+      <h2 class="modal-title">Spring 2026 Case Competition</h2>
+      <button class="modal-close" onclick="closeModal('modal-casecomp')" aria-label="Close">&#10005;</button>
+    </div>
+    <div class="modal-body">
+      <p>This spring, GSCG hosted its second annual Case Competition — challenging participants to develop a comprehensive, community-based event proposal for the Seattle Mariners. The goal: design an experience at T-Mobile Park that attracts new audiences and builds genuine, lasting engagement with specific community groups in the Seattle area.</p>
+      <p>Six teams competed, ranging from solo participants to groups of three. Each team had a week and a half from receiving the project scope to their first-round presentation — requiring real research, creative thinking, and the ability to work under pressure. The quality of work across the board was impressive, making it genuinely difficult to select only three teams to advance.</p>
+      <p>Advancing teams had the opportunity to meet with Case Competition Associates and GSCG directors for feedback before the final round, held in Wolff Auditorium with three faculty judges joining the panel. The winning team — Mateo Sandoval, Maximo Youle, and Jonathan Petrogeorge — pitched a Mariners Camp Out concept backed by strong data and research that stood out for both its creativity and its feasibility.</p>
+      <p>On the planning side, the competition came with real challenges — including having to pivot clients last minute. The team navigated it quickly and without losing momentum. Looking ahead, GSCG plans to begin marketing earlier to build more awareness and traction on campus, and to deepen the integration of participants into the broader GSCG community well beyond the competition itself.</p>
+      <p>Despite the curveballs, the Spring 2026 Case Competition was a genuine success — giving students a chance to apply real consulting skills, build their resumes, and grow both personally and professionally.</p>
+      <div class="modal-detail-row">
+        <span>→ Client: Seattle Mariners</span>
+        <span>→ Winners: Mateo Sandoval, Maximo Youle, Jonathan Petrogeorge</span>
+        <span>→ Venue: Wolff Auditorium · Final Round</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Associates Modal -->
+<div class="modal-overlay" id="modal-associates" onclick="handleOverlayClick(event, 'modal-associates')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-pill"><span class="dot"></span>Organization</div>
+      <h2 class="modal-title">Introducing the Associate Role</h2>
+      <button class="modal-close" onclick="closeModal('modal-associates')" aria-label="Close">&#10005;</button>
+    </div>
+    <div class="modal-body">
+      <p>One of the most significant developments this semester was the launch of a brand-new Associates tier within GSCG. Seven individuals stepped into these roles, collectively covering marketing, human resources, and information technology — bringing more specialized support to the group's operations and giving members early, hands-on experience in areas that matter to them.</p>
+      <p>Because these were entirely new roles, there were no playbooks to inherit and no templates to follow. That came with a learning curve — but it also opened the door to something valuable: a wide-open opportunity to define what these positions could and should look like going forward.</p>
+      <p>Even in their first semester, the associates delivered. Highlights included the successful launch of a GSCG newsletter, an expanded and more consistent social media presence, a client survey developed in direct support of an active consulting project, and internal infrastructure improvements across HR and IT that will continue to pay dividends in semesters ahead.</p>
+      <p>This semester was, in many ways, a proof of concept. GSCG demonstrated that the associate model works — and that even in its earliest form, it can produce meaningful results. With a full semester of lessons learned, the opportunity ahead is to refine role expectations, deepen the associate experience, and expand the program's impact both internally and for the clients GSCG serves.</p>
+      <div class="modal-detail-row">
+        <span>→ 7 Associates across Marketing, HR, and IT</span>
+        <span>→ Newsletter launch · Expanded social media presence</span>
+        <span>→ Client survey development · Internal infrastructure improvements</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{ end }}
+
+{{ define "scripts" }}
+<script>
+  function openModal(id) {
+    document.getElementById(id).classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(id) {
+    document.getElementById(id).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function handleOverlayClick(event, id) {
+    if (event.target === document.getElementById(id)) closeModal(id);
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay.open').forEach(function(m) {
+        m.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    }
+  });
+</script>
 {{ end }}
