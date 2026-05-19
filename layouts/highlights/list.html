@@ -21,9 +21,16 @@
     overflow: hidden;
     margin-top: 2rem;
   }
-  .collage img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .collage img { width: 100%; height: 100%; object-fit: cover; display: block; cursor: zoom-in; }
   .collage .span2 { grid-column: span 2; }
   .collage .tall  { grid-row:    span 2; }
+
+  /* Lightbox */
+  .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.92); z-index: 2000; align-items: center; justify-content: center; cursor: zoom-out; }
+  .lightbox.open { display: flex; }
+  .lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 8px; box-shadow: 0 8px 40px rgba(0,0,0,.5); cursor: default; }
+  .lightbox-close { position: absolute; top: 1.25rem; right: 1.5rem; background: none; border: none; color: white; font-size: 2rem; cursor: pointer; opacity: .6; line-height: 1; padding: .25rem; }
+  .lightbox-close:hover { opacity: 1; }
 
   /* Two-column highlight layout */
   .hl-row {
@@ -205,16 +212,16 @@
     </p>
 
     <div class="collage">
-      <img class="span2" src="{{ "img/trips/IMG_5656.jpeg" | relURL }}" alt="Portland – Trail Blazers team">
-      <img src="https://gu-27.github.io/gscg-photos/photos/portland/IMG_5537.JPG" alt="Portland trip group">
-      <img src="{{ "img/trips/blazers-mascot.jpeg" | relURL }}" alt="Portland – Trail Blazers game">
-      <img src="https://gu-27.github.io/gscg-photos/photos/portland/IMG_5581.JPG" alt="Portland – Nike">
-      <img src="https://gu-27.github.io/gscg-photos/photos/portland/IMG_5609.JPG" alt="Portland visit">
-      <img class="span2" src="{{ "img/trips/IMG_5911.jpeg" | relURL }}" alt="Seattle – Lumen Field with Michael and Lisa">
-      <img src="{{ "img/trips/pike-place.jpeg" | relURL }}" alt="Seattle – Pike Place Market">
-      <img class="span2" src="https://gu-27.github.io/gscg-photos/photos/Mariners/IMG_6073.jpg" alt="Seattle – Mariners presentation">
-      <img src="https://gu-27.github.io/gscg-photos/photos/Lumens/IMG_5938.jpg" alt="Seattle – Lumen Field">
-      <img src="https://gu-27.github.io/gscg-photos/photos/Lumens/IMG_5962.jpg" alt="Seattle – Lumen Field">
+      <img class="span2" src="{{ "img/trips/IMG_5656.jpeg" | relURL }}" alt="Portland – Trail Blazers team" onclick="openLightbox(this.src)">
+      <img src="https://gu-27.github.io/gscg-photos/photos/portland/IMG_5537.JPG" alt="Portland trip group" onclick="openLightbox(this.src)">
+      <img src="{{ "img/trips/blazers-mascot.jpeg" | relURL }}" alt="Portland – Trail Blazers game" onclick="openLightbox(this.src)">
+      <img src="https://gu-27.github.io/gscg-photos/photos/portland/IMG_5581.JPG" alt="Portland – Nike" onclick="openLightbox(this.src)">
+      <img src="https://gu-27.github.io/gscg-photos/photos/portland/IMG_5609.JPG" alt="Portland visit" onclick="openLightbox(this.src)">
+      <img class="span2" src="{{ "img/trips/IMG_5911.jpeg" | relURL }}" alt="Seattle – Lumen Field with Michael and Lisa" onclick="openLightbox(this.src)">
+      <img src="{{ "img/trips/pike-place.jpeg" | relURL }}" alt="Seattle – Pike Place Market" onclick="openLightbox(this.src)">
+      <img class="span2" src="https://gu-27.github.io/gscg-photos/photos/Mariners/IMG_6073.jpg" alt="Seattle – Mariners presentation" onclick="openLightbox(this.src)">
+      <img src="https://gu-27.github.io/gscg-photos/photos/Lumens/IMG_5938.jpg" alt="Seattle – Lumen Field" onclick="openLightbox(this.src)">
+      <img src="https://gu-27.github.io/gscg-photos/photos/Lumens/IMG_5962.jpg" alt="Seattle – Lumen Field" onclick="openLightbox(this.src)">
     </div>
 
     <div class="trip-cards">
@@ -442,6 +449,12 @@
 
 {{ end }}
 
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="if(event.target===this)closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">&#10005;</button>
+  <img src="" alt="Photo">
+</div>
+
 {{ define "scripts" }}
 <script>
   function openModal(id) {
@@ -455,8 +468,18 @@
   function handleOverlayClick(event, id) {
     if (event.target === document.getElementById(id)) closeModal(id);
   }
+  function openLightbox(src) {
+    document.querySelector('#lightbox img').src = src;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
+      closeLightbox();
       document.querySelectorAll('.modal-overlay.open').forEach(function(m) {
         m.classList.remove('open');
         document.body.style.overflow = '';
