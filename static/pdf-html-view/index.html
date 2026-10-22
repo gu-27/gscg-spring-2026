@@ -26,17 +26,21 @@
   --bar:58px; --menu:50px; --gutter:clamp(1.25rem,4.5vw,3.6rem); --radius:18px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-print-color-adjust:exact;print-color-adjust:exact;scroll-behavior:smooth}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact;scroll-behavior:smooth;overflow-x:clip}
 body{font-family:var(--sans);color:var(--ink);background:var(--desk);line-height:1.5;font-size:18px;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}
 a{color:var(--red-2);text-decoration:none}
 a:hover{text-decoration:underline}
 button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 ul,ol{list-style:none}
-:target,.panel{scroll-margin-top:calc(var(--top,60px) + 30px)}
+:target,.panel{scroll-margin-top:calc(var(--top,86px) + 16px)}
 
 /* ── Floating header tile: same width as the panels, stays on top ── */
-.top{position:sticky;top:14px;z-index:50;background:#fff;border-radius:14px;overflow:hidden;
+/* The wrapper sticks and paints a desk-coloured backdrop the full width of the
+   window, so nothing scrolls past behind the tile or around its corners. */
+.topwrap{position:sticky;top:0;z-index:50;padding:14px 0 12px}
+.topwrap::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:100vw;transform:translateX(-50%);background:var(--desk);z-index:-1}
+.top{position:relative;background:#fff;border-radius:14px;overflow:hidden;
   box-shadow:0 1px 2px rgba(4,30,66,.1),0 18px 40px -18px rgba(4,30,66,.45);
   display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:stretch;min-height:60px}
 .top::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:var(--progress,0%);background:var(--red);transition:width .15s linear}
@@ -65,8 +69,8 @@ ul,ol{list-style:none}
 .bar-btn svg{width:15px;height:15px;flex-shrink:0}
 
 /* ── The stack of panels ────────────────────────────────────── */
-.stack{max-width:1240px;margin:0 auto;padding:14px 32px 90px 20px;display:flex;flex-direction:column;gap:44px}
-.stack > .top{margin-bottom:-4px}
+.stack{max-width:1240px;margin:0 auto;padding:0 32px 90px 20px;display:flex;flex-direction:column;gap:44px}
+.stack > .topwrap{margin-bottom:-18px}
 .panel{position:relative;background:var(--paper);border-radius:var(--radius);overflow:hidden;
   box-shadow:0 1px 2px rgba(4,30,66,.08),0 30px 60px -28px rgba(4,30,66,.5),
     12px 12px 0 -4px #fff,12px 12px 0 -3px rgba(4,30,66,.16),
@@ -328,7 +332,8 @@ details.all:not([open]) summary .s{display:none}
 }
 @media screen and (max-width:760px){
   body{overflow-x:hidden;font-size:17px}
-  .top{grid-template-columns:auto minmax(0,1fr);top:8px;border-radius:12px}
+  .topwrap{padding:8px 0 8px}
+  .top{grid-template-columns:auto minmax(0,1fr);border-radius:12px}
   .panel::after{border-width:0 40px 40px 0}
   .panel::before{width:40px;height:40px}
   .p-tab{right:52px;font-size:.6rem;padding:.4rem .7rem .35rem}
@@ -343,7 +348,8 @@ details.all:not([open]) summary .s{display:none}
   .menu a{padding:0 .6rem}
   .bar-btn .t{display:none}
   .bar-btn{padding:0 9px}
-  .stack{padding:8px 12px 60px;gap:18px}
+  .stack{padding:0 12px 60px;gap:18px}
+  .stack > .topwrap{margin-bottom:-4px}
   .mast img{height:48px}
   .contents{grid-template-columns:1fr}
   .p-head{grid-template-columns:1fr;gap:.6rem}
@@ -366,7 +372,7 @@ details.all:not([open]) summary .s{display:none}
   @bottom-right{content:"Page " counter(page);font-family:'Libre Baskerville',Georgia,serif;font-size:8.5pt;font-weight:700;color:#041E42}}
 @media print{
   html,body{background:#fff;font-size:12px}
-  .top,.lb,details.more,details.all,.p-foot{display:none !important}
+  .topwrap,.lb,details.more,details.all,.p-foot{display:none !important}
   .panel::after,.panel::before{display:none}
   .panel,.panel:hover{transform:none}
   .p-tab{box-shadow:none;border:1px solid var(--rule);border-top:0}
@@ -415,7 +421,7 @@ details.all:not([open]) summary .s{display:none}
 <main class="stack" id="doc">
 
 <!-- Floating header tile. Same width as the pages, stays on top as you scroll. -->
-<header class="top" id="top" role="banner">
+<div class="topwrap" id="topwrap"><header class="top" id="top" role="banner">
   <div class="top-brand">
     <div class="top-mark" aria-hidden="true">GSCG</div>
     <div class="top-title"><b>Spring 2026</b><span>Newsletter</span></div>
@@ -443,7 +449,7 @@ details.all:not([open]) summary .s{display:none}
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v7H6z"/></svg><span class="t">Print / PDF</span>
     </button>
   </div>
-</header>
+</header></div>
 
 <!-- 00 · Cover -->
 <section class="panel cover" id="cover" data-title="Cover">
@@ -1022,10 +1028,10 @@ details.all:not([open]) summary .s{display:none}
 (function(){
   var sections = Array.prototype.slice.call(document.querySelectorAll('.panel')).filter(function(s){ return !s.dataset.skip; });
   var total = sections.length;
-  var bar = document.getElementById('top'), menuIn = document.getElementById('menu-in');
+  var bar = document.getElementById('top'), wrap = document.getElementById('topwrap'), menuIn = document.getElementById('menu-in');
   var menuLinks = Array.prototype.slice.call(document.querySelectorAll('.menu a'));
   var current = -1;
-  function offset(){ var h = bar.offsetHeight; document.documentElement.style.setProperty('--top', h + 'px'); return h + 30; }
+  function offset(){ var h = wrap.offsetHeight; document.documentElement.style.setProperty('--top', h + 'px'); return h + 16; }
 
   function update(){
     var mark = window.innerHeight * 0.35, best = 0;
