@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GSCG Spring 2026 Newsletter</title>
+<meta name="description" content="Gonzaga Sport Consulting Group, Spring 2026 newsletter in document view. Reads like a page, prints like a PDF.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ─────────────────────────────────────────────────────────────
+   GSCG Spring 2026 · Document view
+   One HTML file. On screen it is a stack of Letter-sized sheets
+   inside a viewer. On paper it is a 12-page PDF. Same markup.
+   ───────────────────────────────────────────────────────────── */
+:root{
+  --navy:#041E42; --navy-2:#0a2f63; --red:#C8102E; --red-2:#a50d26;
+  --ink:#1b2437; --muted:#5b6b85; --faint:#8a97ad; --rule:#dfe4ec; --tint:#f3f5f9; --tint-2:#e8edf5;
+  --paper:#ffffff; --desk:#dfe3ea;
+  --serif:'Libre Baskerville',Georgia,'Times New Roman',serif;
+  --sans:'Outfit',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --page-w:8.5in; --page-h:11in; --m:0.72in;
+  --bar-h:54px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact;scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--desk);line-height:1.55;font-size:15px;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:var(--red-2);text-decoration:none}
+a:hover{text-decoration:underline}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+ul,ol{list-style:none}
+
+/* ── Viewer bar ─────────────────────────────────────────────── */
+.bar{position:fixed;top:0;left:0;right:0;height:var(--bar-h);z-index:50;background:var(--navy);color:#fff;
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 14px;gap:10px;box-shadow:0 2px 14px rgba(4,30,66,.25)}
+.bar-brand{display:flex;align-items:center;gap:10px;min-width:0}
+.bar-mark{width:32px;height:32px;border-radius:6px;background:var(--red);display:grid;place-items:center;font-family:var(--serif);font-weight:700;font-size:.72rem;letter-spacing:.02em;flex-shrink:0}
+.bar-title{display:flex;flex-direction:column;line-height:1.15;min-width:0}
+.bar-title b{font-size:.8rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar-title span{font-size:.66rem;color:rgba(255,255,255,.55);letter-spacing:.08em;text-transform:uppercase}
+.bar-pager{display:flex;align-items:center;gap:4px;font-variant-numeric:tabular-nums;font-size:.82rem;font-weight:600;letter-spacing:.02em}
+.bar-pager button{width:30px;height:30px;border-radius:6px;display:grid;place-items:center;color:rgba(255,255,255,.75)}
+.bar-pager button:hover{background:rgba(255,255,255,.1);color:#fff}
+.bar-pager svg{width:16px;height:16px}
+.bar-pager .n{padding:0 6px;min-width:96px;text-align:center}
+.bar-actions{display:flex;justify-content:flex-end;align-items:center;gap:6px}
+.bar-btn{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:6px;font-size:.78rem;font-weight:600;letter-spacing:.02em;color:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.18);white-space:nowrap}
+.bar-btn:hover{background:rgba(255,255,255,.1);color:#fff;text-decoration:none}
+.bar-btn.primary{background:var(--red);border-color:var(--red);color:#fff}
+.bar-btn.primary:hover{background:#e0122f}
+.bar-btn svg{width:15px;height:15px;flex-shrink:0}
+.contents-pop{position:fixed;top:calc(var(--bar-h) + 8px);right:14px;z-index:49;background:#fff;color:var(--ink);border-radius:10px;min-width:260px;
+  box-shadow:0 20px 50px -10px rgba(4,30,66,.45),0 0 0 1px rgba(4,30,66,.08);padding:8px;display:none}
+.contents-pop.open{display:block}
+.contents-pop a{display:flex;justify-content:space-between;gap:16px;padding:8px 10px;border-radius:6px;color:var(--ink);font-size:.86rem;font-weight:500}
+.contents-pop a:hover{background:var(--tint);text-decoration:none}
+.contents-pop a span{color:var(--faint);font-variant-numeric:tabular-nums;font-weight:600;font-size:.78rem}
+.contents-pop a.is-current{color:var(--red-2)}
+
+/* ── The document ───────────────────────────────────────────── */
+.doc{padding:calc(var(--bar-h) + 28px) 16px 72px;display:flex;flex-direction:column;align-items:center;gap:28px;counter-reset:page}
+.page{counter-increment:page;background:var(--paper);width:var(--page-w);max-width:100%;min-width:0;min-height:var(--page-h);position:relative;
+  padding:var(--m);display:flex;flex-direction:column;scroll-margin-top:calc(var(--bar-h) + 20px);
+  box-shadow:0 1px 2px rgba(4,30,66,.10),0 24px 48px -20px rgba(4,30,66,.35);
+  opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.page.in{opacity:1;transform:none}
+.page.is-current{outline:2px solid rgba(200,16,46,.0)}
+.page-head{display:flex;justify-content:space-between;align-items:baseline;font-size:.62rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);padding-bottom:9px;border-bottom:1px solid var(--rule);margin-bottom:26px}
+.page-head b{color:var(--red)}
+.page-body{flex:1 1 auto}
+.page-foot{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);padding-top:10px;border-top:1px solid var(--rule);margin-top:26px}
+.page-foot .r{text-align:right}
+.page-foot .num{font-family:var(--serif);font-size:.8rem;font-weight:700;color:var(--navy);letter-spacing:0;text-transform:none}
+.page-foot .num::before{content:counter(page)}
+
+/* ── Type ───────────────────────────────────────────────────── */
+.kicker{font-size:.66rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:.6rem;display:block}
+h1,h2,h3{font-family:var(--serif);color:var(--navy);line-height:1.15;font-weight:700}
+h2{font-size:1.65rem;letter-spacing:-.01em;margin-bottom:.6rem}
+h3{font-size:1.02rem;margin-bottom:.3rem}
+.lede{font-family:var(--serif);font-size:1.02rem;line-height:1.7;color:var(--navy)}
+p{font-size:.92rem;line-height:1.65;color:#2d3748}
+p + p{margin-top:.75rem}
+.note{font-size:.84rem;color:var(--muted)}
+.rule{width:44px;height:3px;background:var(--red);border-radius:2px;margin:.9rem 0 1.1rem}
+.sec{margin-top:1.6rem}
+.sec-h{display:flex;align-items:baseline;gap:12px;margin-bottom:.9rem}
+.sec-h h3{font-size:1.15rem;white-space:nowrap}
+.sec-h::after{content:"";flex:1;height:1px;background:var(--rule)}
+
+/* ── Cover ──────────────────────────────────────────────────── */
+.page.cover{padding:0;overflow:hidden}
+.cover-top{background:var(--navy);color:#fff;padding:var(--m) var(--m) 2.1rem;position:relative}
+.cover-top::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 70% 70% at 85% 10%,rgba(200,16,46,.28),transparent 65%);pointer-events:none}
+.cover-top::after{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:var(--red)}
+.mast{position:relative;display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:1.8rem}
+.mast img{height:62px;width:auto}
+.mast .org{text-align:right;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.6);line-height:1.6}
+.mast .org b{display:block;color:#fff;font-size:.72rem}
+.cover-top .kicker{color:#ff5f78}
+.cover-top h1{color:#fff;font-size:2.7rem;letter-spacing:-.02em;line-height:1.05;max-width:9em}
+.cover-top .lede{color:rgba(255,255,255,.78);max-width:34em;margin-top:1.1rem;font-size:.98rem}
+.cover-photo{position:relative}
+.cover-photo img{width:100%;height:3.4in;object-fit:cover;object-position:center 60%}
+.cover-photo figcaption{position:absolute;left:0;right:0;bottom:0;padding:1.6rem var(--m) .7rem;font-size:.7rem;color:rgba(255,255,255,.85);background:linear-gradient(transparent,rgba(4,30,66,.75))}
+.cover-bottom{padding:1.3rem var(--m) var(--m);display:grid;grid-template-columns:1.25fr 1fr;gap:2rem;flex:1 1 auto}
+.toc h3{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--red);font-family:var(--sans);margin-bottom:.7rem}
+.toc ol{counter-reset:none}
+.toc li a{display:flex;align-items:baseline;gap:.5rem;color:var(--ink);font-size:.88rem;padding:.22rem 0;border-bottom:1px dotted transparent}
+.toc li a:hover{text-decoration:none;color:var(--red-2)}
+.toc li a .dots{flex:1;border-bottom:1px dotted #b9c2d1;transform:translateY(-4px)}
+.toc li a .pg{font-variant-numeric:tabular-nums;font-weight:600;color:var(--navy);font-size:.82rem}
+.cover-side{border-left:1px solid var(--rule);padding-left:2rem;display:flex;flex-direction:column;justify-content:space-between}
+.cover-side .tag{font-family:var(--serif);font-style:italic;color:var(--navy);font-size:1.05rem;line-height:1.6}
+.cover-side .meta{font-size:.72rem;color:var(--muted);line-height:1.8;margin-top:1.2rem}
+.cover-side .meta b{color:var(--navy);font-weight:600}
+
+/* ── Stats ──────────────────────────────────────────────────── */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--rule);border-radius:8px;overflow:hidden}
+.stat{padding:.9rem 1rem;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.stat:nth-child(3n){border-right:0}
+.stat:nth-child(n+4){border-bottom:0}
+.stat b{display:block;font-family:var(--serif);font-size:1.9rem;color:var(--red);line-height:1;margin-bottom:.3rem}
+.stat span{font-size:.72rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.stat a{color:inherit}
+
+/* ── Principles ─────────────────────────────────────────────── */
+.principles{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem}
+.principle{background:var(--tint);border-top:3px solid var(--red);border-radius:0 0 6px 6px;padding:.8rem .9rem}
+.principle b{display:block;font-family:var(--serif);color:var(--red);font-size:1.3rem;line-height:1;margin-bottom:.4rem}
+.principle span{font-size:.82rem;font-weight:600;color:var(--navy);line-height:1.35;display:block}
+
+/* ── Pull quotes ────────────────────────────────────────────── */
+.pull{border-left:3px solid var(--red);padding:.2rem 0 .2rem 1.1rem;margin:1.4rem 0}
+.pull p{font-family:var(--serif);font-style:italic;font-size:1rem;line-height:1.7;color:var(--navy)}
+.pull cite{display:block;font-style:normal;font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-top:.6rem}
+.pull-row{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.pull-row .pull{margin:0}
+
+/* ── Projects ───────────────────────────────────────────────── */
+.project{display:grid;grid-template-columns:2.05in 1fr;gap:1.2rem;padding:1rem 0;border-top:1px solid var(--rule)}
+.project:first-of-type{border-top:0;padding-top:0}
+.project figure img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:6px;cursor:zoom-in}
+.project figcaption{font-size:.66rem;color:var(--faint);margin-top:.35rem;line-height:1.4}
+.project .who{display:flex;align-items:center;gap:.7rem;margin-bottom:.4rem}
+.project .who img{height:34px;width:auto;max-width:70px;object-fit:contain}
+.project .who .tag{font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.project h3{font-size:1.08rem}
+.scope{margin-top:.4rem}
+.scope li{position:relative;padding-left:1rem;font-size:.86rem;color:#2d3748;line-height:1.5;margin:.15rem 0}
+.scope li::before{content:"";position:absolute;left:0;top:.6em;width:6px;height:6px;border-radius:50%;background:var(--red)}
+
+/* ── Photo grids ────────────────────────────────────────────── */
+.grid{display:grid;grid-template-columns:1.05fr 1fr 1fr;grid-auto-rows:1.6in;gap:8px;margin:1.1rem 0 .4rem}
+.grid figure{position:relative;overflow:hidden;border-radius:6px;background:var(--tint-2)}
+.grid figure.tall{grid-row:span 2}
+.grid img{width:100%;height:100%;object-fit:cover;cursor:zoom-in;transition:transform .35s ease}
+.grid figure:hover img{transform:scale(1.03)}
+.grid figcaption{position:absolute;left:0;right:0;bottom:0;padding:1.2rem .6rem .45rem;font-size:.62rem;line-height:1.3;color:#fff;background:linear-gradient(transparent,rgba(4,30,66,.78))}
+.itin{display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;margin:.6rem 0 .2rem}
+.itin li{font-size:.78rem;color:var(--muted);display:flex;align-items:center;gap:.45rem}
+.itin li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--red)}
+
+/* ── Highlights ─────────────────────────────────────────────── */
+.hl{display:grid;grid-template-columns:1fr 2.35in;gap:1.3rem;align-items:start;padding:1.1rem 0;border-top:1px solid var(--rule)}
+.hl:first-of-type{border-top:0;padding-top:0}
+.hl figure img{width:100%;border-radius:6px;cursor:zoom-in;box-shadow:0 2px 10px rgba(4,30,66,.12)}
+.hl figcaption{font-size:.66rem;color:var(--faint);margin-top:.4rem;line-height:1.4}
+.hl h3{font-size:1.12rem;margin-bottom:.4rem}
+.hl .kicker{margin-bottom:.35rem}
+
+/* ── Read more (details) ────────────────────────────────────── */
+details.more{margin-top:.6rem}
+details.more summary{list-style:none;display:inline-flex;align-items:center;gap:.4rem;font-size:.8rem;font-weight:700;color:var(--red-2);cursor:pointer;user-select:none}
+details.more summary::-webkit-details-marker{display:none}
+details.more summary::before{content:"+";display:inline-grid;place-items:center;width:16px;height:16px;border-radius:50%;border:1.5px solid currentColor;font-size:.75rem;line-height:1}
+details.more[open] summary::before{content:"–"}
+details.more[open] summary .l{display:none}
+details.more:not([open]) summary .s{display:none}
+details.more .body{margin-top:.7rem;padding:.9rem 1rem;background:var(--tint);border-radius:6px}
+details.more .body p{font-size:.88rem}
+details.more .body ul{margin-top:.7rem;padding-top:.6rem;border-top:1px solid var(--rule)}
+details.more .body li{font-size:.78rem;color:var(--muted)}
+
+/* ── Reflections ────────────────────────────────────────────── */
+.quotes{column-count:2;column-gap:1.6rem}
+.quote{break-inside:avoid;page-break-inside:avoid;padding:0 0 .8rem .9rem;margin-bottom:.8rem;border-left:2px solid var(--red)}
+.quote p{font-family:var(--serif);font-style:italic;font-size:.76rem;line-height:1.58;color:#374151}
+.quote b{display:block;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);margin-top:.45rem}
+
+/* ── Thank you ──────────────────────────────────────────────── */
+.people{display:flex;flex-wrap:wrap;gap:.7rem 1.2rem}
+.person{display:flex;align-items:center;gap:.6rem;min-width:0}
+.person img{width:46px;height:46px;border-radius:50%;object-fit:cover;object-position:center top;flex-shrink:0;border:2px solid var(--tint-2)}
+.person b{display:block;font-size:.82rem;font-weight:600;color:var(--navy);line-height:1.25}
+.person span{display:block;font-size:.68rem;color:var(--muted);line-height:1.35}
+.people.compact .person img{width:36px;height:36px}
+.people.compact .person{width:calc(20% - 1rem)}
+.logos{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.6rem}
+.logos figure{display:flex;flex-direction:column;align-items:center;gap:.35rem;width:1.15in}
+.logos img{height:44px;width:auto;max-width:100%;object-fit:contain}
+.logos figcaption{font-size:.64rem;color:var(--muted);text-align:center;line-height:1.3}
+.sba{display:flex;align-items:center;gap:1.2rem;margin-top:.4rem}
+.sba img{height:62px;width:auto}
+.page.tight .sec{margin-top:1.15rem}
+.page.tight .sec-h{margin-bottom:.6rem}
+.page.tight .people{gap:.5rem 1.1rem}
+.sba p{font-size:.82rem}
+
+/* ── Back cover ─────────────────────────────────────────────── */
+.ctas{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-top:1.1rem}
+.cta{border:1px solid var(--rule);border-radius:8px;padding:1rem 1.1rem;display:flex;flex-direction:column}
+.cta.primary{background:var(--navy);border-color:var(--navy)}
+.cta .kicker{margin-bottom:.4rem;color:var(--muted)}
+.cta.primary .kicker{color:rgba(255,255,255,.6)}
+.cta h3{font-size:1rem;margin-bottom:.35rem}
+.cta.primary h3{color:#fff}
+.cta p{font-size:.82rem;flex:1}
+.cta.primary p{color:rgba(255,255,255,.72)}
+.cta a{display:inline-block;margin-top:.8rem;font-size:.8rem;font-weight:700;color:var(--red-2)}
+.cta.primary a{background:var(--red);color:#fff;padding:.45rem .9rem;border-radius:6px;align-self:flex-start}
+.cta.primary a:hover{text-decoration:none;background:#e0122f}
+.stamp{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:1.8rem;padding-top:1.4rem;border-top:1px solid var(--rule)}
+.stamp .wordmark{font-family:var(--serif);font-weight:700;color:var(--navy);font-size:1.2rem;line-height:1.1}
+.stamp .wordmark small{display:block;font-family:var(--sans);font-weight:600;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-top:.25rem}
+.stamp .addr{font-size:.76rem;color:var(--muted);line-height:1.7;margin-top:.6rem}
+.links a{display:block;font-size:.82rem;padding:.2rem 0;color:var(--navy)}
+.links a:hover{color:var(--red-2)}
+.colophon{margin-top:1.4rem;padding:.9rem 1rem;background:var(--tint);border-radius:6px;font-size:.74rem;color:var(--muted);line-height:1.6}
+.colophon b{color:var(--navy);font-weight:600}
+
+/* ── Print appendix: the full stories get their own sheets on paper ── */
+.page.appendix{display:none}
+.print-ref{display:none;font-size:.78rem;font-weight:600;color:var(--muted);margin-top:.6rem}
+.band img{width:100%;height:1.7in;object-fit:cover;border-radius:6px;margin:.2rem 0 1.1rem}
+.flow{column-count:2;column-gap:1.4rem}
+.flow p{font-size:.84rem;line-height:1.6}
+.flow p + p{margin-top:.7rem}
+.flow ul{margin-top:.8rem;padding-top:.6rem;border-top:1px solid var(--rule);break-inside:avoid}
+.flow li{font-size:.76rem;color:var(--muted);line-height:1.5}
+
+/* ── Lightbox ───────────────────────────────────────────────── */
+.lb{position:fixed;inset:0;z-index:100;background:rgba(4,30,66,.9);display:none;align-items:center;justify-content:center;flex-direction:column;padding:2rem;cursor:zoom-out}
+.lb.open{display:flex}
+.lb img{max-width:92vw;max-height:82vh;object-fit:contain;border-radius:6px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.lb figcaption{color:rgba(255,255,255,.85);font-size:.82rem;margin-top:.9rem;text-align:center;max-width:60ch}
+.lb button{position:absolute;top:1rem;right:1.2rem;color:#fff;font-size:1.6rem;opacity:.7;width:40px;height:40px}
+.lb button:hover{opacity:1}
+
+/* ── Keyboard hint ──────────────────────────────────────────── */
+.hint{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:40;background:rgba(4,30,66,.92);color:rgba(255,255,255,.85);font-size:.72rem;padding:.45rem .9rem;border-radius:999px;letter-spacing:.02em;opacity:0;transition:opacity .4s;pointer-events:none}
+.hint.show{opacity:1}
+.hint kbd{font-family:inherit;border:1px solid rgba(255,255,255,.35);border-radius:4px;padding:0 .35em;margin:0 .1em}
+
+/* ── Small screens: the sheet becomes a column ──────────────── */
+@media screen and (max-width:900px){
+  :root{--m:clamp(1.1rem,5vw,2rem)}
+  body{overflow-x:hidden}
+  .sec-h h3{white-space:normal}
+  .bar{grid-template-columns:auto 1fr auto;padding:0 10px}
+  .bar-title{display:none}
+  .bar-pager .n{min-width:78px;font-size:.76rem}
+  .bar-btn .t{display:none}
+  .bar-btn{padding:0 9px}
+  .doc{padding-top:calc(var(--bar-h) + 16px);gap:16px}
+  .page{min-height:0;width:100%}
+  .cover-top h1{font-size:2.2rem}
+  .cover-photo img{height:52vw;min-height:200px}
+  .cover-bottom{grid-template-columns:1fr;gap:1.4rem}
+  .cover-side{border-left:0;padding-left:0;border-top:1px solid var(--rule);padding-top:1.2rem}
+  .stats{grid-template-columns:1fr 1fr}
+  .stat:nth-child(3n){border-right:1px solid var(--rule)}
+  .stat:nth-child(2n){border-right:0}
+  .stat:nth-child(n+4){border-bottom:1px solid var(--rule)}
+  .stat:nth-child(n+5){border-bottom:0}
+  .principles{grid-template-columns:1fr 1fr}
+  .pull-row{grid-template-columns:1fr}
+  .project{grid-template-columns:1fr}
+  .project figure img{aspect-ratio:16/9}
+  .grid{grid-template-columns:1fr 1fr;grid-auto-rows:38vw}
+  .grid figure.tall{grid-row:span 2}
+  .hl{grid-template-columns:1fr}
+  .hl figure{order:-1}
+  .quotes{column-count:1}
+  .people.compact .person{width:calc(50% - .6rem)}
+  .ctas,.stamp{grid-template-columns:1fr}
+  .hint{display:none}
+}
+
+/* ── Print: each sheet is a page ────────────────────────────── */
+@page{size:letter;margin:0}
+@media print{
+  html,body{background:#fff}
+  .bar,.contents-pop,.lb,.hint{display:none !important}
+  .doc{padding:0;gap:0;display:block}
+  .page{width:8.5in;max-width:none;height:11in;min-height:0;margin:0;box-shadow:none;opacity:1;transform:none;break-after:page;page-break-after:always;break-inside:avoid}
+  .page:last-child{break-after:auto;page-break-after:auto}
+  a{color:inherit;text-decoration:none}
+  details.more{display:none !important}
+  .print-ref{display:block}
+  .page.appendix{display:flex}
+  .grid figure:hover img{transform:none}
+  .grid{grid-auto-rows:2.05in}
+  .hl{grid-template-columns:1fr 2.9in}
+  #p7 .hl figure img{max-height:2.6in;object-fit:cover}
+  .cta.primary a{background:var(--red)}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ Viewer bar ═══════════════════════════════════════════ -->
+<header class="bar" role="banner">
+  <div class="bar-brand">
+    <div class="bar-mark" aria-hidden="true">GSCG</div>
+    <div class="bar-title"><b>Spring 2026 Newsletter</b><span>Document view · Gonzaga Sport Consulting Group</span></div>
+  </div>
+  <nav class="bar-pager" aria-label="Pages">
+    <button id="prev" type="button" aria-label="Previous page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+    <span class="n" aria-live="polite">Page <span id="cur">1</span> of <span data-total>12</span></span>
+    <button id="next" type="button" aria-label="Next page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+  </nav>
+  <div class="bar-actions">
+    <button class="bar-btn" id="toc-btn" type="button" aria-expanded="false" aria-controls="toc-pop">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span class="t">Contents</span>
+    </button>
+    <a class="bar-btn" href="../" title="Open the web version of this newsletter">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg><span class="t">Web version</span>
+    </a>
+    <button class="bar-btn primary" id="print-btn" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v7H6z"/></svg><span class="t">Print / Save PDF</span>
+    </button>
+  </div>
+</header>
+<div class="contents-pop" id="toc-pop" role="menu">
+  <a href="#p1">Cover<span>1</span></a>
+  <a href="#p2">Opening and by the numbers<span>2</span></a>
+  <a href="#p3">Semester projects<span>3</span></a>
+  <a href="#p5">The trips: Portland<span>5</span></a>
+  <a href="#p6">The trips: Seattle<span>6</span></a>
+  <a href="#p7">Season highlights<span>7</span></a>
+  <a href="#p9">Student reflections<span>9</span></a>
+  <a href="#p11">Thank you<span>11</span></a>
+  <a href="#p12">Get involved<span>12</span></a>
+</div>
+
+<main class="doc" id="doc">
+
+<!-- ═══ Page 1 · Cover ═══════════════════════════════════════ -->
+<article class="page cover" id="p1" aria-label="Page 1, cover">
+  <div class="cover-top">
+    <div class="mast">
+      <img src="img/gscg-mark.png" alt="Gonzaga Sport Consulting Group">
+      <div class="org"><b>Gonzaga University</b>School of Business Administration<br>Spokane, Washington</div>
+    </div>
+    <span class="kicker">Spring 2026 Newsletter</span>
+    <h1>A Semester of Growth</h1>
+    <p class="lede">Five live client engagements. Fourteen students on the road in Portland and Seattle. A first presentation to university leadership. This is the record of the semester, built for the clients, advisors, donors, and families who made it possible.</p>
+  </div>
+  <figure class="cover-photo">
+    <img src="img/cover.jpg" alt="GSCG students look out over the field at T-Mobile Park in Seattle" data-cap="T-Mobile Park, Seattle. The team takes in the field before presenting a full semester of work to the Mariners front office.">
+    <figcaption>T-Mobile Park, Seattle. The team takes in the field before presenting a full semester of work to the Mariners front office.</figcaption>
+  </figure>
+  <div class="cover-bottom">
+    <nav class="toc" aria-label="Contents">
+      <h3>In this issue</h3>
+      <ol>
+        <li><a href="#p2">Opening letter<span class="dots"></span><span class="pg">2</span></a></li>
+        <li><a href="#p2">Spring 2026 by the numbers<span class="dots"></span><span class="pg">2</span></a></li>
+        <li><a href="#p3">Semester projects<span class="dots"></span><span class="pg">3</span></a></li>
+        <li><a href="#p5">The trips: Portland and Seattle<span class="dots"></span><span class="pg">5</span></a></li>
+        <li><a href="#p7">Season highlights<span class="dots"></span><span class="pg">7</span></a></li>
+        <li><a href="#p9">Student reflections<span class="dots"></span><span class="pg">9</span></a></li>
+        <li><a href="#p11">Thank you<span class="dots"></span><span class="pg">11</span></a></li>
+        <li><a href="#p12">Get involved<span class="dots"></span><span class="pg">12</span></a></li>
+      </ol>
+    </nav>
+    <aside class="cover-side">
+      <p class="tag">A community growing through engaging with business problems in sports.</p>
+      <div class="meta">
+        <b>Issue</b> Spring 2026 · Semester showcase<br>
+        <b>Published by</b> Gonzaga Sport Consulting Group<br>
+        <b>Faculty director</b> John Correia<br>
+        <b>Read online</b> gscg.pages.dev
+      </div>
+    </aside>
+  </div>
+</article>
+
+<!-- ═══ Page 2 · Opening + numbers ═══════════════════════════ -->
+<article class="page" id="p2" aria-label="Page 2">
+  <header class="page-head"><span><b>GSCG</b> · Spring 2026 Newsletter</span><span>Opening</span></header>
+  <div class="page-body">
+    <span class="kicker">Spring 2026</span>
+    <h2>Something we had never done before</h2>
+    <div class="rule"></div>
+    <p class="lede">This semester, the Gonzaga Sport Consulting Group did something it has never done before: it delivered live consulting work to five real clients, sent fourteen students to Portland and Seattle for field experiences with world-class organizations, presented its outcomes to university leadership for the first time, and closed the spring with a graduating class of seniors who leave behind something they helped build.</p>
+    <p class="note" style="margin-top:.9rem">What follows is a record of that semester, built for the clients, advisors, donors, and families who made it possible.</p>
+
+    <div class="pull">
+      <p>"Lean into the hard things. When I feel uncomfortable or in the unknown, that is where I have grown the most. And lean into communities. They are here to help."</p>
+      <cite>Mia Crosby · GSCG Consultant, Spring 2026</cite>
+    </div>
+
+    <div class="sec">
+      <div class="sec-h"><h3>Spring 2026 by the numbers</h3></div>
+      <div class="stats">
+        <div class="stat"><b>5</b><span>Client projects</span></div>
+        <div class="stat"><b>14</b><span><a href="#p5">Students on trips</a></span></div>
+        <div class="stat"><b>6</b><span><a href="#p7">Case competition teams</a></span></div>
+        <div class="stat"><b>2</b><span><a href="#p7">Institutional presentations</a></span></div>
+        <div class="stat"><b>1</b><span><a href="#p8">First virtual advisory social</a></span></div>
+        <div class="stat"><b>57</b><span>Students served</span></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-h"><h3>Our foundation: the four principles</h3></div>
+      <div class="principles">
+        <div class="principle"><b>1</b><span>Commit to grow through GSCG</span></div>
+        <div class="principle"><b>2</b><span>Support each other's growth</span></div>
+        <div class="principle"><b>3</b><span>Do hard things</span></div>
+        <div class="principle"><b>4</b><span>Have fun</span></div>
+      </div>
+    </div>
+  </div>
+  <footer class="page-foot"><span>Gonzaga Sport Consulting Group</span><span class="num"></span><span class="r">Spring 2026</span></footer>
+</article>
+
+<!-- ═══ Page 3 · Projects 1 of 2 ═════════════════════════════ -->
+<article class="page" id="p3" aria-label="Page 3">
+  <header class="page-head"><span><b>GSCG</b> · Spring 2026 Newsletter</span><span>Semester projects · 1 of 2</span></header>
+  <div class="page-body">
+    <span class="kicker">Spring 2026</span>
+    <h2>Semester projects</h2>
+    <p class="note" style="margin-bottom:1.2rem">Five live client engagements. Every project ended with a real presentation to the client.</p>
+
+    <section class="project">
+      <figure><img src="img/project-mariners.jpg" alt="GSCG students present to the Seattle Mariners in a conference room at T-Mobile Park" data-cap="The Mariners team presents at T-Mobile Park."><figcaption>Presenting at T-Mobile Park</figcaption></figure>
+      <div>
+        <div class="who"><img src="img/mariners-logo.svg" alt="Seattle Mariners"><span class="tag">MLB · Seattle, WA</span></div>
+        <h3>Seattle Mariners</h3>
+        <ul class="scope">
+          <li>Strengthen the fundraising program by clarifying its story</li>
+          <li>Benchmark best practices across MLB organizations</li>
+          <li>Create new in-stadium experiences that attract diverse fans</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="project">
+      <figure><img src="img/project-zephyr.jpg" alt="GSCG students present to Spokane Zephyr staff in a brick-walled office" style="object-position:center 42%" data-cap="The Zephyr team presents its sponsorship work."><figcaption>Presenting to the Zephyr</figcaption></figure>
+      <div>
+        <div class="who"><img src="img/zephyr-logo.png" alt="Spokane Zephyr"><span class="tag">NWSL · Spokane, WA</span></div>
+        <h3>Spokane Zephyr</h3>
+        <ul class="scope">
+          <li>Identify and prioritize high-fit sponsor partners</li>
+          <li>Build a targeted set of strategic sponsors and contacts</li>
+          <li>Develop a cohesive sponsorship narrative</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="project">
+      <figure><img src="img/project-blazers.jpg" alt="GSCG students present a case study to Portland Trail Blazers staff in a boardroom" style="object-position:center top" data-cap="The Trail Blazers team presents its midpoint work in Portland."><figcaption>Midpoint presentation, Portland</figcaption></figure>
+      <div>
+        <div class="who"><img src="img/blazers-logo.svg" alt="Portland Trail Blazers"><span class="tag">NBA · Portland, OR</span></div>
+        <h3>Portland Trail Blazers</h3>
+        <ul class="scope">
+          <li>Grow stronger B2B partnerships by identifying best practices</li>
+          <li>Build scalable partnership frameworks for the organization</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+  <footer class="page-foot"><span>Gonzaga Sport Consulting Group</span><span class="num"></span><span class="r">Spring 2026</span></footer>
+</article>
+
+<!-- ═══ Page 4 · Projects 2 of 2 ═════════════════════════════ -->
+<article class="page" id="p4" aria-label="Page 4">
+  <header class="page-head"><span><b>GSCG</b> · Spring 2026 Newsletter</span><span>Semester projects · 2 of 2</span></header>
+  <div class="page-body">
+    <section class="project">
+      <figure><img src="img/project-gii.jpg" alt="GSCG students with the Gonzaga Institute for Informatics team in front of a presentation screen" style="object-position:center top" data-cap="The Informatics team after its final presentation."><figcaption>Final presentation on campus</figcaption></figure>
+      <div>
+        <div class="who"><img src="img/gonzaga-logo.svg" alt="Gonzaga University"><span class="tag">Higher Ed · Spokane, WA</span></div>
+        <h3>Gonzaga Institute for Informatics</h3>
+        <ul class="scope">
+          <li>Research and map sports analytics programs across the nation</li>
+          <li>Identify trends, gaps, and opportunities in the space</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="project">
+      <figure><img src="img/project-sunshine.jpg" alt="GSCG students present to Sunshine Club advisors in the Zag Business boardroom" style="object-position:center top" data-cap="The Sunshine Club team presents in the School of Business boardroom."><figcaption>Presenting to the Sunshine Club</figcaption></figure>
+      <div>
+        <div class="who"><img src="img/sunshine-logo.png" alt="Sunshine Club"><img src="img/lpga-logo.svg" alt="LPGA"><span class="tag">Golf · Spokane, WA</span></div>
+        <h3>Sunshine Club / LPGA Spokane</h3>
+        <ul class="scope">
+          <li>Research sponsorship investment in the small-cap market</li>
+          <li>Make the case for bringing an LPGA event to Spokane</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="sec">
+      <div class="sec-h"><h3>What the work felt like</h3></div>
+      <div class="pull-row">
+        <div class="pull">
+          <p>"That presentation was one of the more stressful experiences I have had. I did not expect to walk into a full boardroom. Having that experience, presenting under pressure and feeling confident in the work we had done, was formative and memorable for all of us."</p>
+          <cite>Noah Liu</cite>
+        </div>
+        <div class="pull">
+          <p>"This was my first time researching a topic in depth over an extended period of time. I had no prior knowledge of sports analytics coming in, and seeing all of that hard work pay off at the final presentation showed me what I am capable of when I lean into something unfamiliar."</p>
+          <cite>Kenzie Bushnell</cite>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-h"><h3>Thank you to our clients</h3></div>
+      <div class="logos">
+        <figure><img src="img/mariners-logo.svg" alt=""><figcaption>Seattle Mariners</figcaption></figure>
+        <figure><img src="img/zephyr-logo.png" alt=""><figcaption>Spokane Zephyr</figcaption></figure>
+        <figure><img src="img/blazers-logo.svg" alt=""><figcaption>Portland Trail Blazers</figcaption></figure>
+        <figure><img src="img/gonzaga-logo.svg" alt=""><figcaption>Gonzaga Institute for Informatics</figcaption></figure>
+        <figure><img src="img/sunshine-logo.png" alt=""><figcaption>Sunshine Club</figcaption></figure>
+      </div>
+    </div>
+  </div>
+  <footer class="page-foot"><span>Gonzaga Sport Consulting Group</span><span class="num"></span><span class="r">Spring 2026</span></footer>
+</article>
+
+<!-- ═══ Page 5 · Portland ════════════════════════════════════ -->
+<article class="page" id="p5" aria-label="Page 5">
+  <header class="page-head"><span><b>GSCG</b> · Spring 2026 Newsletter</span><span>The trips · Portland</span></header>
+  <div class="page-body">
+    <span class="kicker">The trips</span>
+    <h2>Portland, Oregon</h2>
+    <p class="lede">Seven students visited Nike World Headquarters, connected with alumna Torrey on careers and growth, then were hosted by the Portland Trail Blazers at Moda Center: touring the facilities, presenting midpoint work to their staff, and attending a game as their guests.</p>
+
+    <div class="grid">
+      <figure class="tall"><img src="img/nike-gates.jpg" alt="The group at the entrance to Nike World Headquarters" data-cap="Nike World Headquarters, Beaverton. The Portland group at the gates."><figcaption>Nike World Headquarters, Beaverton</figcaption></figure>
+      <figure><img src="img/nike-flags.jpg" alt="The group in front of the flags on the Nike campus" data-cap="On the Nike campus with alumni Andrew and Hayley."><figcaption>With Zag alumni on the Nike campus</figcaption></figure>
+      <figure><img src="img/nike-lobby.jpg" alt="Students inside a Nike building lobby with a basketball hoop" data-cap="Inside the Nike campus."><figcaption>Inside the campus</figcaption></figure>
+      <figure><img src="img/blazers-wall.jpg" alt="The group in front of the Portland Trail Blazers logo at Moda Center" data-cap="Moda Center. Hosted by the Portland Trail Blazers."><figcaption>Moda Center, with the Trail Blazers</figcaption></figure>
+      <figure><img src="img/blazers-mascot.jpg" alt="Students in the stands with the Trail Blazers mascot" data-cap="Guests of the Trail Blazers at the game."><figcaption>Game night as the Blazers' guests</figcaption></figure>
+    </div>
+
+    <ul class="itin">
+      <li>Nike World Headquarters · Beaverton, OR</li>
+      <li>Torrey · Gonzaga alumna</li>
+      <li>Portland Trail Blazers · Moda Center · midpoint presentation and game</li>
+    </ul>
+
+    <details class="more">
+      <summary><span class="l">Read the full Portland story</span><span class="s">Close the story</span></summary>
+      <div class="body">
+        <p>The Portland trip kicked off at Nike World Headquarters in Beaverton, where Gonzaga alumni Andrew and Hayley welcomed the group and shared their journeys from Gonzaga into the sports and business world. Hearing how former Zags navigated their paths, the pivots, the opportunities, the hard lessons, made the experience feel both inspiring and genuinely practical.</p>
+        <p>From Nike, the group connected with alumna Torrey for a candid conversation about professional growth from outside the traditional consulting track. Her perspective on staying adaptable and showing up fully in roles that look different from what you expected was one of the more memorable moments of the trip.</p>
+        <p>The experience culminated at Moda Center, where the Portland Trail Blazers hosted the group with a level of generosity that made a real impression. We met with members of their staff across multiple departments, got a behind-the-scenes tour of the facility and its premium spaces, insights that directly shaped our midpoint presentation, and then presented our work directly to their team. To close it out, the Trail Blazers hosted us at a game, giving the group a chance to see the organization in full operation and end the trip on a high note.</p>
+        <p>More than the individual stops, what stood out was how the trip deepened the group's sense of unity. The shared experience of traveling, presenting, and learning together created something that's hard to replicate in a classroom, and something the team will carry long after the semester ends.</p>
+      </div>
+    </details>
+  </div>
+  <footer class="page-foot"><span>Gonzaga Sport Consulting Group</span><span class="num"></span><span class="r">Spring 2026</span></footer>
+</article>
+
+<!-- ═══ Page 6 · Seattle ═════════════════════════════════════ -->
+<article class="page" id="p6" aria-label="Page 6">
+  <header class="page-head"><span><b>GSCG</b> · Spring 2026 Newsletter</span><span>The trips · Seattle</span></header>
+  <div class="page-body">
+    <span class="kicker">The trips</span>
+    <h2>Seattle, Washington</h2>
+    <p class="lede">Seven students spent two days behind the scenes at Lumen Field with the Seahawks, then presented a full semester of consulting work to the Mariners front office at T-Mobile Park.</p>
+
+    <div class="grid">
+      <figure class="tall"><img src="img/pike-place-sign.jpg" alt="The group under the Public Market Center sign at Pike Place Market" data-cap="Pike Place Market. Breakfast together before the big day."><figcaption>Pike Place Market, before the big day</figcaption></figure>
+      <figure><img src="img/lumen-lounge.jpg" alt="The group seated around tables in a Lumen Field lounge, listening" data-cap="Lumen Field. Michael and Lisa share their journeys in the sports industry."><figcaption>Lumen Field, with Michael and Lisa</figcaption></figure>
+      <figure><img src="img/lumen-field.jpg" alt="Students at a railing overlooking the field at Lumen Field" data-cap="Behind the scenes at Lumen Field with the Seattle Seahawks."><figcaption>Behind the scenes with the Seahawks</figcaption></figure>
+      <figure><img src="img/tmobile-park.jpg" alt="Students look out over the field at T-Mobile Park" data-cap="T-Mobile Park, before the Mariners presentation."><figcaption>T-Mobile Park, with the Mariners</figcaption></figure>
+      <figure><img src="img/pike-place-fish.jpg" alt="A student in a fishmonger's apron holding price signs at Pike Place Fish Market" data-cap="Pike Place Fish Market."><figcaption>Pike Place Fish Market</figcaption></figure>
+    </div>
+
+    <ul class="itin">
+      <li>Seattle Seahawks · Lumen Field</li>
+      <li>Seattle Mariners · T-Mobile Park · front office presentation</li>
+      <li>SEA Change · ballpark segmentation · theme night breakdown</li>
+    </ul>
+
+    <details class="more">
+      <summary><span class="l">Read the full Seattle story</span><span class="s">Close the story</span></summary>
+      <div class="body">
+        <p>The Seattle trip was a true combination of everything we'd worked toward all semester. It started Tuesday morning at Pike Place, grabbing breakfast together as a group before the big day, a simple moment that helped everyone settle in and reconnect before things got real.</p>
+        <p>From there, we headed to Lumen Field, where advisory member Michael and Lisa welcomed us with a full stadium tour and took time to share their journeys in the sports industry. One theme kept surfacing: you never stop learning. Lisa described how a colleague helped her learn Tableau, which helped her carve out a niche role, a perfect example of the kind of peer support we try to build within GSCG. After the tour, Michael sat in on a run-through of our Mariners presentation and gave us feedback we genuinely couldn't have found on our own. That kind of real-world perspective is hard to come by, and it meant a lot.</p>
+        <p>We grabbed a quick lunch at Hatback across the street, made some last-minute adjustments, and made our way over to T-Mobile Park. Francis, who had been guiding our work throughout the semester, was there along with Amanda and Jaron, who gave us a tour of parts of the stadium we hadn't yet explored. Finally meeting everyone in person after months of collaboration made the whole experience feel full-circle.</p>
+        <p>The panel discussion was one of the highlights, more conversational than most panels, offering a genuine look at what careers in sports actually look like across a wide range of roles. Francis mentioned that much of her day-to-day is filled with challenges, and those are the things she celebrates most. That perspective hit close to home for GSCG, where we push ourselves into hard things on purpose.</p>
+        <p>Batting practice was probably where we had the most fun as a group, on the field, in the dugout, taking photos. It's the kind of moment you don't forget.</p>
+        <p>The presentation itself covered SEA Change, ballpark segmentation, and theme night breakdowns. Shoutout to Eamon and Marcus, the Claude AI dashboards they built were genuinely impressive and drew a lot of attention in the room. Hearing afterward that the Mariners had independently identified many of the same things we had was one of the most validating moments of the semester. We're excited to explore the potential to work together again. That made everything worth it.</p>
+      </div>
+    </details>
+  </div>
+  <footer class="page-foot"><span>Gonzaga Sport Consulting Group</span><span class="num"></span><span class="r">Spring 2026</span></footer>
+</article>
+
+<!-- ═══ Page 7 · Highlights 1 of 2 ═══════════════════════════ -->
+<article class="page" id="p7" aria-label="Page 7">
+  <header class="page-head"><span><b>GSCG</b> · Spring 2026 Newsletter</span><span>Season highlights · 1 of 2</span></header>
+  <div class="page-body">
+    <span class="kicker">Season highlights</span>
+    <h2>The moments that defined the semester</h2>
+    <div class="rule"></div>
+
+    <section class="hl" id="case-comp">
+      <div>
+        <span class="kicker">Case competition</span>
+        <h3>Competing on the biggest stage</h3>
+        <p>GSCG hosted its second annual Case Competition this spring, challenging participants to design a community-based event at T-Mobile Park for the Seattle Mariners. Six teams competed. The winning team, Mateo Sandoval, Maximo Youle, and Jonathan Petrogeorge, pitched a Mariners Camp Out concept backed by strong data and research.</p>
+        <details class="more">
+          <summary><span class="l">Read the full story</span><span class="s">Close the story</span></summary>
+          <div class="body">
+            <p>This spring, GSCG hosted its second annual Case Competition, challenging participants to develop a comprehensive, community-based event proposal for the Seattle Mariners. The goal: design an experience at T-Mobile Park that attracts new audiences and builds genuine, lasting engagement with specific community groups in the Seattle area.</p>
+            <p>Six teams competed, ranging from solo participants to groups of three. Each team had a week and a half from receiving the project scope to their first-round presentation, requiring real research, creative thinking, and the ability to work under pressure. The quality of work across the board was impressive, making it genuinely difficult to select only three teams to advance.</p>
+            <p>Advancing teams had the opportunity to meet with Case Competition Associates and GSCG directors for feedback before the final round, held in Wolff Auditorium with three faculty judges joining the panel. The winning team pitched a Mariners Camp Out concept that stood out for both its creativity and its feasibility.</p>
+            <p>On the planning side, the competition came with real challenges, including having to pivot clients last minute. The team navigated it quickly and without losing momentum. Looking ahead, GSCG plans to begin marketing earlier to build more awareness and traction on campus, and to deepen the integration of participants into the broader GSCG community well beyond the competition itself.</p>
+            <ul>
+              <li>Client: Seattle Mariners</li>
+              <li>Winners: Mateo Sandoval, Maximo Youle, Jonathan Petrogeorge</li>
+              <li>Final round: Wolff Auditorium</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+      <figure><img src="img/casecomp.jpg" alt="Case competition participants and judges in Wolff Auditorium in front of a Mariners Camp Out slide" data-cap="The Case Competition final in Wolff Auditorium. On screen: the winning Mariners Camp Out concept."><figcaption>The final round in Wolff Auditorium, with the winning Mariners Camp Out concept on screen</figcaption></figure>
+    </section>
+
+    <section class="hl" id="presentations">
+      <div>
+        <span class="kicker">Institutional presentations</span>
+        <h3>Presenting to the Board and university administration</h3>
+        <p>For the first time, GSCG presented its work directly to university leadership, sharing the semester's consulting outcomes, trip impacts, and the group's trajectory as a formal student organization.</p>
+      </div>
+      <figure><img src="img/dna.jpg" alt="A slide titled Our DNA showing Jesuit, sports, and experiential learning flowing into GSCG" data-cap="Our DNA. A slide from the presentation to university leadership: Jesuit, sports, and experiential learning."><figcaption>From the deck: Jesuit, sports, and experiential learning</figcaption></figure>
+    </section>
+  </div>
+  <footer class="page-foot"><span>Gonzaga Sport Consulting Group</span><span class="num"></span><span class="r">Spring 2026</span></footer>
+</article>
+
+<!-- ═══ Page 8 · Highlights 2 of 2 ═══════════════════════════ -->
+<article class="page" id="p8" aria-label="Page 8">
+  <header class="page-head"><span><b>GSCG</b> · Spring 2026 Newsletter</span><span>Season highlights · 2 of 2</span></header>
+  <div class="page-body">
+    <section class="hl" id="associates">
+      <div>
+        <span class="kicker">Organization</span>
+        <h3>Our Associates structure</h3>
+        <p>This spring GSCG formalized its internal structure with a dedicated Associates tier. Seven individuals stepped into new roles across marketing, human resources, and information technology, creating a clear pathway from associate to full consultant.</p>
+        <details class="more">
+          <summary><span class="l">Read the full story</span><span class="s">Close the story</span></summary>
+          <div class="body">
+            <p>One of the most significant developments this semester was the launch of a brand-new Associates tier within GSCG. Seven individuals stepped into these roles, collectively covering marketing, human resources, and information technology, bringing more specialized support to the group's operations and giving members early, hands-on experience in areas that matter to them.</p>
+            <p>Because these were entirely new roles, there were no playbooks to inherit and no templates to follow. That came with a learning curve, but it also opened the door to something valuable: a wide-open opportunity to define what these positions could and should look like going forward.</p>
+            <p>Even in their first semester, the associates delivered. Highlights included the successful launch of a GSCG newsletter, an expanded and more consistent social media presence, a client survey developed in direct support of an active consulting project, and internal infrastructure improvements across HR and IT that will continue to pay dividends in semesters ahead.</p>
+            <p>This semester was, in many ways, a proof of concept. GSCG demonstrated that the associate model works, and that even in its earliest form, it can produce meaningful results. With a full semester of lessons learned, the opportunity ahead is to refine role expectations, deepen the associate experience, and expand the program's impact both internally and for the clients GSCG serves.</p>
+            <ul>
+              <li>7 Associates across Marketing, HR, and IT</li>
+              <li>Newsletter launch and an expanded social media presence</li>
+              <li>Client survey development and internal infrastructure improvements</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+      <figure><img src="img/org.jpg" alt="GSCG organization chart showing the executive board, advisory council, associates, project teams, and case competition" data-cap="The Spring 2026 organization: executive board, advisory council, associates, five project teams, and the case competition."><figcaption>The Spring 2026 organization</figcaption></figure>
+    </section>
+
+    <section class="hl" id="technology">
+      <div>
+        <span class="kicker">Technology</span>
+        <h3>Our use of Claude Code</h3>
+        <p>GSCG leaned into AI-assisted development this semester, using Claude Code to build client deliverables, design the recap site, and produce the thank-you sites for Portland and Seattle supporters. It became a genuine part of how the group works.</p>
+      </div>
+      <figure><img src="img/dashboard.png" alt="A dark analytics dashboard titled MLB Theme Night Analysis with charts by category" data-cap="MLB Theme Night Analysis. A student-built dashboard from the Mariners engagement."><figcaption>A student-built theme night dashboard from the Mariners engagement</figcaption></figure>
+    </section>
+
+    <section class="hl" id="advisory-board">
+      <div>
+        <span class="kicker">Advisory Board</span>
+        <h3>Advisory Board engagement</h3>
+        <p>The GSCG Advisory Board met several times this semester to strategize next steps for the organization, offering guidance on structure, client selection, and long-term growth. The group also hosted its first virtual social, bringing advisors and students together in an informal setting to build relationships across the network.</p>
+      </div>
+      <figure><img src="img/virtual-social.jpg" alt="A video call grid of advisors and students at the GSCG virtual social" data-cap="The first GSCG virtual social. Advisors and students on one call."><figcaption>The first virtual advisory social</figcaption></figure>
+    </section>
+  </div>
+  <footer class="page-foot"><span>Gonzaga Sport Consulting Group</span><span class="num"></span><span class="r">Spring 2026</span></footer>
+</article>
+
+<!-- ═══ Page 9 · Reflections 1 of 2 ══════════════════════════ -->
+<article class="page" id="p9" aria-label="Page 9">
+  <header class="page-head"><span><b>GSCG</b> · Spring 2026 Newsletter</span><span>Student reflections · 1 of 2</span></header>
+  <div class="page-body">
+    <span class="kicker">Student reflections</span>
+    <h2>In their own words</h2>
+    <p class="note" style="margin-bottom:1.2rem">What the semester meant to the students who lived it.</p>
+    <div class="quotes">
+      <div class="quote"><p>"Lisa said she chooses her job based on where she is at in life. Right now she is 'enjoying the comfort.' That is a skill in my opinion: to just absorb the place you are at in life. ... Frances was quick to say more than 75% of their work is a challenge. She highlights failures rather than successes, noting that without failure there is no growth. ... One takeaway from this semester is the importance of your network and helping one another grow. It was so awesome to watch us all help one another, and to see professionals do the same thing throughout their careers."</p><b>Samantha Smith</b></div>
+      <div class="quote"><p>"You don't need everything figured out. You just need to be willing to learn and grow along the way. ... Lean into the hard things. When I feel uncomfortable or in the unknown, that is where I have grown the most. And lean into communities. They are here to help. ... I felt super nervous coming into this experience and felt like I was not capable. After this semester, I have grown in my ability to sit with being uncomfortable and nervous. In those moments, that is when I figure out new ideas. All ideas don't need to be 100% correct before sharing."</p><b>Mia Crosby</b></div>
+      <div class="quote"><p>"The best way to respond to tough client feedback is to rebound, regroup, and channel your frustration into improvement. When we critique each other's ideas, they get better. When we listen to feedback from others, we are better. ... I worked on the same problem for weeks without completely understanding why. Then, in the last couple of weeks, it all came together. I'm proud of how I kept getting my work done and trusting the process. I can see myself growing as a leader, presenter, and researcher."</p><b>Thomas Banzhof</b></div>
+      <div class="quote"><p>"My key takeaway was relating everything back to my why. The story I want to tell about my career should not be defined purely by successes or any given title. It should always be the push to do hard things and fail while doing them. ... We as students are so focused on getting the seemingly right answer that we end up not thinking about the impact. The true importance is why something matters to a client, and that reframing is going to be central to how I approach projects going forward."</p><b>Jake Scalzo</b></div>
+      <div class="quote"><p>"My biggest takeaway was the significance of crafting meaningful relationships within the business world. When someone takes their time to invest in you, you can learn from that. As you grow, do the same for others. ... I've grown in my communication abilities. Talking with and listening to people in many different industries led me to grow in my professional adaptability and networking skills. I've learned to tailor my language and approach to each professional I meet."</p><b>Lauren Smith</b></div>
+      <div class="quote"><p>"Growth doesn't always follow a clear or linear path. It reflects the effort, curiosity, and initiative you bring to it. One of my biggest takeaways was how important relationships are in the growth process. Growth is not something you do alone. ... Hearing that if you're not being challenged, you're not growing. That was a powerful reminder. This experience pushed me to step outside my comfort zone in a way that led to meaningful growth, both personally and professionally."</p><b>Paige Olson</b></div>
+      <div class="quote"><p>"There are a million ways to get where you want to be, and the path is not linear. Failure and rejection is just redirection. It is true, and it has been true in my own life. That reminder was one thousand percent necessary. ... When you are faced with a problem, figure it out. Lean into it, and lean into others to solve it. Set yourself apart by focusing on the little things: remembering names, following up, fostering connections."</p><b>Allison Kann</b></div>
+      <div class="quote"><p>"One of my biggest takeaways was learning not only how to find meaningful information, but how to present it in a clear and powerful way. It's super important to know your stuff, but also to be able to talk about it and express why it matters. ... Every week was a different thing to research, presenting a new challenge. Learning to stay versatile and adapt was a major growing experience for me."</p><b>Cameron Ames</b></div>
+    </div>
+  </div>
+  <footer class="page-foot"><span>Gonzaga Sport Consulting Group</span><span class="num"></span><span class="r">Spring 2026</span></footer>
+</article>
+
+<!-- ═══ Page 10 · Reflections 2 of 2 ═════════════════════════ -->
+<article class="page" id="p10" aria-label="Page 10">
+  <header class="page-head"><span><b>GSCG</b> · Spring 2026 Newsletter</span><span>Student reflections · 2 of 2</span></header>
+  <div class="page-body">
+    <div class="quotes">
+      <div class="quote"><p>"Work put in behind the scenes can be crucial in nurturing your skillset and added value to an organization. Even when it is not visible, it supports a wider career outlook. ... This semester made me significantly more open to growing through failure, and not strictly aiming to impress or expect perfection in every trial. I am a lot more open to learning through challenges."</p><b>Marcus Heppner</b></div>
+      <div class="quote"><p>"Nike reinforced how important it is to be intentional early in your career, defining your why, building relationships, and proactively setting up informational conversations. Most career paths are nonlinear, and staying open to different opportunities while developing core skills is what separates people."</p><b>Dylan Hite</b></div>
+      <div class="quote"><p>"This was my first time researching a topic in depth over an extended period of time. I had no prior knowledge of sports analytics coming in, and seeing all of that hard work pay off at the final presentation showed me what I am capable of when I lean into something unfamiliar."</p><b>Kenzie Bushnell</b></div>
+      <div class="quote"><p>"That presentation was one of the more stressful experiences I have had. I did not expect to walk into a full boardroom. Having that experience, presenting under pressure and feeling confident in the work we had done, was formative and memorable for all of us."</p><b>Noah Liu</b></div>
+      <div class="quote"><p>"When you're younger, there is time to put your head down and grind it out. As you grow, a transition into a role where work-life balance is more accepted becomes a decision you can make intentionally. Hearing that framing humanized the career grind for me."</p><b>Owen Hyatt</b></div>
+      <div class="quote"><p>"I have become more comfortable with spontaneity and being quick to react when problems arise. The socials were a great way to connect with team members I didn't otherwise get to interact with as much, and I'm excited for GSCG marketing to keep growing."</p><b>Emma Fuller</b></div>
+      <div class="quote"><p>"Find a balance between what you are doing professionally and what stage of life you are in. Build relationships and friendships that make your job easier and worthwhile. Those two things together, that is what stood out from this entire experience."</p><b>Eamon Mohrbacher</b></div>
+      <div class="quote"><p>"Being able to hear feedback and connect with professionals in the sports industry was so rewarding. Knowing that they were willing to give up time for us even though they had a game that same evening is something I will carry into my career."</p><b>Matthew Marin</b></div>
+      <div class="quote"><p>"It is always a privilege to present to our clients in person. The feedback we received was invaluable, and the willingness to connect personally after the meeting continues to reinforce how important GSCG is to student growth."</p><b>Rachel</b></div>
+      <div class="quote"><p>"Individual drive is key but ineffective if not paired with strong teamwork. Working with a shared vision makes the hard work easier, and empowers you to advocate for the positions that fit you best."</p><b>Charlie Herman</b></div>
+    </div>
+
+    <p class="note" style="margin-top:.4rem;font-size:.76rem">More reflections, trip by trip, on the supporters' thank-you site: <a href="https://gu-27.github.io/GSCG-ThankYou-Supporters-2026/" target="_blank" rel="noopener">gu-27.github.io/GSCG-ThankYou-Supporters-2026</a></p>
+  </div>
+  <footer class="page-foot"><span>Gonzaga Sport Consulting Group</span><span class="num"></span><span class="r">Spring 2026</span></footer>
+</article>
+
+<!-- ═══ Page 11 · Thank you ══════════════════════════════════ -->
+<article class="page tight" id="p11" aria-label="Page 11">
+  <header class="page-head"><span><b>GSCG</b> · Spring 2026 Newsletter</span><span>Thank you</span></header>
+  <div class="page-body">
+    <span class="kicker">With gratitude</span>
+    <h2>Thank you</h2>
+    <p class="note" style="margin-bottom:1.3rem">This semester was made possible by the people who showed up, for our students, our clients, and our mission.</p>
+
+    <div class="sec" style="margin-top:0">
+      <div class="sec-h"><h3>Project advisors</h3></div>
+      <div class="people">
+        <div class="person"><img src="img/head-lafferty.jpg" alt=""><div><b>Tyler Lafferty</b><span>Founder · Strategy Labs, SevenTwo, 14Four and Slingshot</span></div></div>
+        <div class="person"><img src="img/head-smith.jpg" alt=""><div><b>Joe Smith</b><span>Head of Brand and Experience Marketing · Truist Bank</span></div></div>
+        <div class="person"><img src="img/head-correia.jpg" alt=""><div><b>John Correia</b><span>Associate Professor, MIS · Faculty Director</span></div></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-h"><h3>Presentation advisors</h3></div>
+      <div class="people">
+        <div class="person"><img src="img/head-mcquilkin.jpg" alt=""><div><b>Kevin McQuilkin</b><span>Executive in Residence · Trustee</span></div></div>
+        <div class="person"><img src="img/head-loroz.jpg" alt=""><div><b>Dr. Peggy Sue Loroz</b><span>Professor of Marketing · Faculty Athletics Representative</span></div></div>
+        <div class="person"><img src="img/head-reese.jpg" alt=""><div><b>Ed Reese</b><span>Executive in Residence</span></div></div>
+        <div class="person"><img src="img/head-correia.jpg" alt=""><div><b>John Correia</b><span>Associate Professor, MIS · Faculty Director</span></div></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-h"><h3>GSCG Council</h3></div>
+      <div class="people compact">
+        <div class="person"><img src="img/head-valdez.jpg" alt=""><div><b>Mateo Valdez</b></div></div>
+        <div class="person"><img src="img/head-weber.jpg" alt=""><div><b>Gary Weber</b></div></div>
+        <div class="person"><img src="img/head-sullivan.jpg" alt=""><div><b>Brooke Sullivan</b></div></div>
+        <div class="person"><img src="img/head-smith.jpg" alt=""><div><b>Joe Smith</b></div></div>
+        <div class="person"><img src="img/head-sattler.jpg" alt=""><div><b>Michael Sattler</b></div></div>
+        <div class="person"><img src="img/head-merlino.jpg" alt=""><div><b>JJ Merlino</b></div></div>
+        <div class="person"><img src="img/head-lafferty.jpg" alt=""><div><b>Tyler Lafferty</b></div></div>
+        <div class="person"><img src="img/head-kelly.jpg" alt=""><div><b>Tate Kelly</b></div></div>
+        <div class="person"><img src="img/head-bui.jpg" alt=""><div><b>Greg Bui</b></div></div>
+        <div class="person"><img src="img/head-deibert.jpg" alt=""><div><b>Jayne Deibert</b></div></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-h"><h3>Our clients</h3></div>
+      <div class="logos">
+        <figure><img src="img/mariners-logo.svg" alt="Seattle Mariners"><figcaption>Seattle Mariners<br>MLB · Seattle, WA</figcaption></figure>
+        <figure><img src="img/zephyr-logo.png" alt="Spokane Zephyr"><figcaption>Spokane Zephyr<br>NWSL · Spokane, WA</figcaption></figure>
+        <figure><img src="img/blazers-logo.svg" alt="Portland Trail Blazers"><figcaption>Portland Trail Blazers<br>NBA · Portland, OR</figcaption></figure>
+        <figure><img src="img/gonzaga-logo.svg" alt="Gonzaga University"><figcaption>Gonzaga Informatics<br>Higher Ed · Spokane, WA</figcaption></figure>
+        <figure><img src="img/sunshine-logo.png" alt="Sunshine Club"><figcaption>Sunshine Club<br>Golf · Spokane, WA</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-h"><h3>Supported by</h3></div>
+      <div class="sba">
+        <img src="img/sba-logo.jpg" alt="Gonzaga University School of Business Administration">
+        <p>The Gonzaga University School of Business Administration, which makes the hands-on work of GSCG possible every semester.</p>
+      </div>
+    </div>
+  </div>
+  <footer class="page-foot"><span>Gonzaga Sport Consulting Group</span><span class="num"></span><span class="r">Spring 2026</span></footer>
+</article>
+
+<!-- ═══ Page 12 · Get involved / back cover ══════════════════ -->
+<article class="page" id="p12" aria-label="Page 12">
+  <header class="page-head"><span><b>GSCG</b> · Spring 2026 Newsletter</span><span>Get involved</span></header>
+  <div class="page-body">
+    <span class="kicker">Get involved</span>
+    <h2>Help us continue to grow through sports and business.</h2>
+    <div class="rule"></div>
+    <div class="ctas">
+      <div class="cta primary">
+        <span class="kicker">New project</span>
+        <h3>Want to start a new project?</h3>
+        <p>Bring us a challenge. Our student teams take on real sport-industry work every semester.</p>
+        <a href="mailto:gscg@gonzaga.edu?subject=Starting%20a%20project%20with%20GSCG&body=Hi%20GSCG%2C%20we%27d%20like%20to%20talk%20about%20a%20potential%20project.">Start a project</a>
+      </div>
+      <div class="cta">
+        <span class="kicker">Spread the word</span>
+        <h3>Know someone who'd be interested in what we're doing?</h3>
+        <p>Forward this on to a contact who'd like to hear about what we do, or to explore a project idea with us.</p>
+        <a id="forward" href="mailto:?subject=Gonzaga%20Sport%20Consulting%20Group&body=Thought%20you%27d%20be%20interested%20in%20the%20work%20Gonzaga%27s%20Sport%20Consulting%20Group%20is%20doing.%20Take%20a%20look%3A%20https%3A%2F%2Fgscg.pages.dev%2Fnewsletter%2Fspring-2026%2Fpdf-html-view%2F">Forward this newsletter</a>
+      </div>
+      <div class="cta">
+        <span class="kicker">Mailing list</span>
+        <h3>Want to join our mailing list?</h3>
+        <p>Like what you see? Get our updates at the end of each semester.</p>
+        <a href="mailto:gscg@gonzaga.edu?subject=Add%20me%20to%20your%20mailing%20list&body=Hey%2C%20this%20is%20pretty%20cool.%20Can%20you%20add%20me%20to%20your%20mailing%20list%3F">Join the list</a>
+      </div>
+      <div class="cta">
+        <span class="kicker">Support</span>
+        <h3>Want to support the work we do?</h3>
+        <p>Help fund the hands-on opportunities that make GSCG possible.</p>
+        <a href="mailto:correia@gonzaga.edu?subject=Supporting%20GSCG&body=Hi%2C%20I%27d%20like%20to%20learn%20about%20supporting%20GSCG%20financially.">Give to GSCG</a>
+      </div>
+    </div>
+
+    <div class="stamp">
+      <div>
+        <div class="wordmark">Gonzaga<small>University</small><small style="letter-spacing:.14em;color:var(--navy);margin-top:.5rem">Sport Consulting Group</small></div>
+        <p class="addr">Gonzaga University<br>School of Business Administration<br>Spokane, WA<br>gscg@gonzaga.edu</p>
+      </div>
+      <div class="links">
+        <span class="kicker" style="color:var(--muted)">Find us</span>
+        <a href="https://gscg.pages.dev/" target="_blank" rel="noopener">gscg.pages.dev</a>
+        <a href="https://www.instagram.com/gonzagasportconsulting" target="_blank" rel="noopener">Instagram · @gonzagasportconsulting</a>
+        <a href="https://www.linkedin.com/company/gonzaga-sport-consulting-group" target="_blank" rel="noopener">LinkedIn · Gonzaga Sport Consulting Group</a>
+        <a href="https://gu-27.github.io/GSCG-ThankYou-Supporters-2026/" target="_blank" rel="noopener">Spring 2026 supporters' thank-you site</a>
+        <a href="../">This newsletter as a website</a>
+      </div>
+    </div>
+
+    <div class="colophon">
+      <b>About this document.</b> This newsletter is a single web page laid out as a twelve-page document. On screen the stories expand, the photos enlarge, and the contents link. On paper it prints to US Letter: use Print / Save PDF at the top of the page. © 2026 Gonzaga Sport Consulting Group. All rights reserved.
+    </div>
+  </div>
+  <footer class="page-foot"><span>Gonzaga Sport Consulting Group</span><span class="num"></span><span class="r">Spring 2026</span></footer>
+</article>
+
+</main>
+
+<figure class="lb" id="lb" aria-hidden="true">
+  <button type="button" aria-label="Close">&#10005;</button>
+  <img src="" alt="">
+  <figcaption></figcaption>
+</figure>
+<div class="hint" id="hint">Use <kbd>←</kbd> <kbd>→</kbd> to turn pages</div>
+
+<script>
+(function(){
+  // Full stories, as sheets of their own in print. Built from the same text the details hold.
+  var stories = [
+    { sel: '#p5 details.more',        kicker: 'The trips, in full',          title: 'Portland, Oregon',                 photo: 'img/nike-flags.jpg', alt: 'The group on the Nike campus' },
+    { sel: '#p6 details.more',        kicker: 'The trips, in full',          title: 'Seattle, Washington',              photo: null },
+    { sel: '#case-comp details.more', kicker: 'Season highlights, in full',  title: 'Spring 2026 Case Competition',     photo: 'img/casecomp.jpg', alt: 'The case competition final' },
+    { sel: '#associates details.more',kicker: 'Season highlights, in full',  title: 'Introducing the Associate role',   photo: 'img/org.jpg', alt: 'The Spring 2026 organization chart' }
+  ];
+  var doc = document.getElementById('doc'), base = document.querySelectorAll('.page').length;
+  stories.forEach(function(st, i){
+    var d = document.querySelector(st.sel); if (!d) return;
+    var num = base + i + 1;
+    var ref = document.createElement('p'); ref.className = 'print-ref'; ref.textContent = 'The full story continues on page ' + num + '.';
+    d.parentNode.insertBefore(ref, d.nextSibling);
+    var art = document.createElement('article'); art.className = 'page appendix'; art.id = 'p' + num; art.setAttribute('aria-hidden', 'true');
+    art.innerHTML = '<header class="page-head"><span><b>GSCG</b> · Spring 2026 Newsletter</span><span>' + st.kicker + '</span></header>' +
+      '<div class="page-body"><span class="kicker">' + st.kicker + '</span><h2>' + st.title + '</h2><div class="rule"></div>' +
+      (st.photo ? '<div class="band"><img src="' + st.photo + '" alt="' + st.alt + '"></div>' : '') +
+      '<div class="flow"></div></div>' +
+      '<footer class="page-foot"><span>Gonzaga Sport Consulting Group</span><span class="num"></span><span class="r">Spring 2026</span></footer>';
+    var flow = art.querySelector('.flow');
+    Array.prototype.forEach.call(d.querySelector('.body').children, function(c){ flow.appendChild(c.cloneNode(true)); });
+    doc.appendChild(art);
+  });
+
+  var pages = Array.prototype.slice.call(document.querySelectorAll('.page:not(.appendix)'));
+  var total = pages.length;
+  Array.prototype.forEach.call(document.querySelectorAll('[data-total]'), function(e){ e.textContent = total; });
+  var cur = document.getElementById('cur');
+  var tocLinks = Array.prototype.slice.call(document.querySelectorAll('.contents-pop a'));
+  var current = -1;
+
+  // Which sheet is "the page" right now: the one under the upper third of the viewport.
+  function update(){
+    var mark = window.innerHeight * 0.4, best = 0, bd = Infinity;
+    for (var i = 0; i < pages.length; i++){
+      var r = pages[i].getBoundingClientRect();
+      var d = r.top > mark ? r.top - mark : (r.bottom < mark ? mark - r.bottom : 0);
+      if (d < bd){ bd = d; best = i; }
+    }
+    if (best !== current){
+      current = best;
+      cur.textContent = best + 1;
+      pages.forEach(function(p, i){ p.classList.toggle('is-current', i === best); });
+      var id = pages[best].id;
+      tocLinks.forEach(function(a){ a.classList.toggle('is-current', a.getAttribute('href') === '#' + id); });
+      if (history.replaceState) history.replaceState(null, '', '#' + id);
+    }
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+
+  function go(i){
+    i = Math.max(0, Math.min(total - 1, i));
+    pages[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  document.getElementById('prev').addEventListener('click', function(){ go(current - 1); });
+  document.getElementById('next').addEventListener('click', function(){ go(current + 1); });
+  document.addEventListener('keydown', function(e){
+    if (e.target && /input|textarea|select/i.test(e.target.tagName)) return;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' && e.shiftKey){ e.preventDefault(); go(current + 1); }
+    else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' && e.shiftKey){ e.preventDefault(); go(current - 1); }
+    else if (e.key === 'Escape'){ closeToc(); closeLb(); }
+  });
+
+  // Sheets fade in as they arrive.
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if (en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.02 });
+    pages.forEach(function(p){ io.observe(p); });
+  } else {
+    pages.forEach(function(p){ p.classList.add('in'); });
+  }
+  // Never leave a sheet invisible if the observer misses it (deep links, print).
+  setTimeout(function(){ pages.forEach(function(p){ p.classList.add('in'); }); }, 2500);
+
+  // Contents popover
+  var tocBtn = document.getElementById('toc-btn'), tocPop = document.getElementById('toc-pop');
+  function closeToc(){ tocPop.classList.remove('open'); tocBtn.setAttribute('aria-expanded', 'false'); }
+  tocBtn.addEventListener('click', function(e){
+    e.stopPropagation();
+    var open = !tocPop.classList.contains('open');
+    tocPop.classList.toggle('open', open);
+    tocBtn.setAttribute('aria-expanded', String(open));
+  });
+  tocPop.addEventListener('click', function(e){ if (e.target.closest('a')) closeToc(); });
+  document.addEventListener('click', function(e){ if (!tocPop.contains(e.target) && e.target !== tocBtn) closeToc(); });
+
+  // Print: open every story so the PDF carries the full text, then put things back.
+  var wasOpen = [];
+  function openAll(){
+    wasOpen = [];
+    Array.prototype.forEach.call(document.querySelectorAll('details.more'), function(d){ wasOpen.push(d.open); d.open = true; });
+    pages.forEach(function(p){ p.classList.add('in'); });
+  }
+  function restore(){
+    Array.prototype.forEach.call(document.querySelectorAll('details.more'), function(d, i){ d.open = !!wasOpen[i]; });
+  }
+  window.addEventListener('beforeprint', openAll);
+  window.addEventListener('afterprint', restore);
+  document.getElementById('print-btn').addEventListener('click', function(){ openAll(); setTimeout(function(){ window.print(); }, 60); });
+
+  // Lightbox
+  var lb = document.getElementById('lb'), lbImg = lb.querySelector('img'), lbCap = lb.querySelector('figcaption');
+  function openLb(img){
+    lbImg.src = img.currentSrc || img.src; lbImg.alt = img.alt || '';
+    lbCap.textContent = img.getAttribute('data-cap') || img.alt || '';
+    lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden';
+  }
+  function closeLb(){ lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; lbImg.src = ''; }
+  Array.prototype.forEach.call(document.querySelectorAll('.page img[data-cap]'), function(img){
+    img.addEventListener('click', function(){ openLb(img); });
+  });
+  lb.addEventListener('click', closeLb);
+
+  // "Forward this newsletter" carries whichever URL the reader is on.
+  var fwd = document.getElementById('forward');
+  if (fwd && /^https?:/.test(location.href)){
+    var url = location.href.split('#')[0];
+    fwd.href = 'mailto:?subject=' + encodeURIComponent('Gonzaga Sport Consulting Group') +
+      '&body=' + encodeURIComponent("Thought you'd be interested in the work Gonzaga's Sport Consulting Group is doing. Take a look: " + url);
+  }
+
+  // One-time keyboard hint on wide screens.
+  var hint = document.getElementById('hint');
+  if (window.innerWidth > 900){
+    setTimeout(function(){ hint.classList.add('show'); }, 1200);
+    setTimeout(function(){ hint.classList.remove('show'); }, 5200);
+  }
+
+  update();
+})();
+</script>
+</body>
+</html>
