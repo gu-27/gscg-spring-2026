@@ -33,40 +33,40 @@ a{color:var(--red-2);text-decoration:none}
 a:hover{text-decoration:underline}
 button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 ul,ol{list-style:none}
-:target{scroll-margin-top:calc(var(--bar) + var(--menu) + 18px)}
-.panel{scroll-margin-top:calc(var(--bar) + var(--menu) + 18px)}
+:target,.panel{scroll-margin-top:calc(var(--top,60px) + 30px)}
 
-/* ── Document bar ────────────────────────────────────────────── */
-.bar{position:fixed;top:0;left:0;right:0;height:var(--bar);z-index:50;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 16px;gap:12px}
-.bar::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:var(--progress,0%);background:var(--red);transition:width .15s linear;z-index:1}
-.bar-brand{display:flex;align-items:center;gap:10px;min-width:0}
-.bar-mark{width:34px;height:34px;border-radius:6px;background:var(--red);display:grid;place-items:center;font-family:var(--serif);font-weight:700;font-size:.72rem;flex-shrink:0}
-.bar-title{display:flex;flex-direction:column;line-height:1.15;min-width:0}
-.bar-title b{font-size:.78rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.bar-title span{font-size:.64rem;color:rgba(255,255,255,.55);letter-spacing:.08em;text-transform:uppercase}
-.bar-actions{display:flex;align-items:center;gap:6px}
-.bar-btn{display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 12px;border-radius:6px;font-size:.76rem;font-weight:600;color:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.18);white-space:nowrap}
-.bar-btn:hover{background:rgba(255,255,255,.1);color:#fff;text-decoration:none}
-.bar-btn.primary{background:var(--red);border-color:var(--red);color:#fff}
-.bar-btn.primary:hover{background:#E0122F}
-.bar-btn svg{width:15px;height:15px;flex-shrink:0}
-
-/* ── Section menu: rides along under the bar ────────────────── */
-.menu{position:sticky;top:var(--bar);z-index:45;background:#fff;border-bottom:1px solid var(--rule);box-shadow:0 6px 20px -14px rgba(4,30,66,.4);height:var(--menu)}
-.menu-in{max-width:1240px;margin:0 auto;height:100%;display:flex;align-items:center;gap:4px;padding:0 12px;overflow-x:auto;scrollbar-width:none}
-.menu-in::-webkit-scrollbar{display:none}
-.menu a{display:inline-flex;align-items:center;gap:.5rem;height:34px;padding:0 .85rem;border-radius:999px;font-size:.82rem;font-weight:600;color:var(--muted);white-space:nowrap;border:1.5px solid transparent;flex-shrink:0}
+/* ── Floating header tile: same width as the panels, stays on top ── */
+.top{position:sticky;top:14px;z-index:50;background:#fff;border-radius:14px;overflow:hidden;
+  box-shadow:0 1px 2px rgba(4,30,66,.1),0 18px 40px -18px rgba(4,30,66,.45);
+  display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:stretch;min-height:60px}
+.top::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:var(--progress,0%);background:var(--red);transition:width .15s linear}
+.top-brand{display:flex;align-items:center;gap:10px;padding:0 16px 0 14px;background:var(--navy);color:#fff}
+.top-mark{width:32px;height:32px;border-radius:6px;background:var(--red);display:grid;place-items:center;font-family:var(--serif);font-weight:700;font-size:.68rem;flex-shrink:0}
+.top-title{display:flex;flex-direction:column;line-height:1.15;white-space:nowrap}
+.top-title b{font-size:.74rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.top-title span{font-size:.6rem;color:rgba(255,255,255,.55);letter-spacing:.08em;text-transform:uppercase}
+.menu{display:flex;align-items:center;gap:0;padding:0 8px;overflow-x:auto;scrollbar-width:none;min-width:0}
+.menu::-webkit-scrollbar{display:none}
+.menu a{display:inline-flex;align-items:center;gap:.4rem;height:34px;padding:0 .62rem;border-radius:999px;font-size:.78rem;font-weight:600;color:var(--muted);white-space:nowrap;flex-shrink:0}
 .menu a .n{font-family:var(--serif);font-size:.72rem;font-weight:700;color:var(--faint)}
 .menu a:hover{color:var(--navy);background:var(--tint);text-decoration:none}
-.menu a.is-current{color:#fff;background:var(--navy);border-color:var(--navy)}
+.menu a.is-current{color:#fff;background:var(--navy)}
 .menu a.is-current .n{color:var(--pink)}
-.menu .arrows{margin-left:auto;display:flex;gap:2px;flex-shrink:0;padding-left:8px}
-.menu .arrows button{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;color:var(--muted);border:1.5px solid var(--rule)}
-.menu .arrows button:hover{color:var(--navy);border-color:var(--navy)}
-.menu .arrows svg{width:15px;height:15px}
+.top-actions{display:flex;align-items:center;gap:6px;padding:0 10px 0 8px;border-left:1px solid var(--rule)}
+@media screen and (max-width:1560px){.top-actions .bar-btn:not(.primary) .t{display:none}.top-actions .bar-btn:not(.primary){padding:0 9px}}
+.top-actions .arrows{display:flex;gap:2px;margin-right:4px}
+.top-actions .arrows button{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;color:var(--muted);border:1.5px solid var(--rule)}
+.top-actions .arrows button:hover{color:var(--navy);border-color:var(--navy)}
+.top-actions .arrows svg{width:15px;height:15px}
+.bar-btn{display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 12px;border-radius:999px;font-size:.76rem;font-weight:600;color:var(--navy);border:1.5px solid var(--rule);white-space:nowrap}
+.bar-btn:hover{border-color:var(--navy);text-decoration:none}
+.bar-btn.primary{background:var(--red);border-color:var(--red);color:#fff}
+.bar-btn.primary:hover{background:#E0122F;border-color:#E0122F}
+.bar-btn svg{width:15px;height:15px;flex-shrink:0}
 
 /* ── The stack of panels ────────────────────────────────────── */
-.stack{max-width:1240px;margin:0 auto;padding:calc(var(--bar) + 30px) 32px 90px 20px;display:flex;flex-direction:column;gap:44px}
+.stack{max-width:1240px;margin:0 auto;padding:14px 32px 90px 20px;display:flex;flex-direction:column;gap:44px}
+.stack > .top{margin-bottom:-4px}
 .panel{position:relative;background:var(--paper);border-radius:var(--radius);overflow:hidden;
   box-shadow:0 1px 2px rgba(4,30,66,.08),0 30px 60px -28px rgba(4,30,66,.5),
     12px 12px 0 -4px #fff,12px 12px 0 -3px rgba(4,30,66,.16),
@@ -328,15 +328,22 @@ details.all:not([open]) summary .s{display:none}
 }
 @media screen and (max-width:760px){
   body{overflow-x:hidden;font-size:17px}
-  .bar{padding:0 10px}
-  .bar-title span{display:none}
-  .bar-btn .t{display:none}
-  .bar-btn{padding:0 9px}
+  .top{grid-template-columns:auto minmax(0,1fr);top:8px;border-radius:12px}
+  .panel::after{border-width:0 40px 40px 0}
+  .panel::before{width:40px;height:40px}
+  .p-tab{right:52px;font-size:.6rem;padding:.4rem .7rem .35rem}
+  .cover .p-head{padding-top:3.4rem}
+  .p-head{padding-top:3.2rem}
+  .top-brand{padding:0 10px}
+  .top-title{display:none}
+  .top-actions{grid-column:1/-1;border-left:0;border-top:1px solid var(--rule);justify-content:flex-end;padding:6px 10px}
+  .top-actions .arrows{margin-right:auto}
   .menu a .t{display:none}
   .menu a.is-current .t{display:inline}
-  .menu a{padding:0 .7rem}
-  .menu .arrows{display:none}
-  .stack{padding-top:calc(var(--bar) + 16px);padding-left:12px;padding-right:12px;gap:18px}
+  .menu a{padding:0 .6rem}
+  .bar-btn .t{display:none}
+  .bar-btn{padding:0 9px}
+  .stack{padding:8px 12px 60px;gap:18px}
   .mast img{height:48px}
   .contents{grid-template-columns:1fr}
   .p-head{grid-template-columns:1fr;gap:.6rem}
@@ -359,7 +366,7 @@ details.all:not([open]) summary .s{display:none}
   @bottom-right{content:"Page " counter(page);font-family:'Libre Baskerville',Georgia,serif;font-size:8.5pt;font-weight:700;color:#041E42}}
 @media print{
   html,body{background:#fff;font-size:12px}
-  .bar,.menu,.lb,details.more,details.all,.p-foot{display:none !important}
+  .top,.lb,details.more,details.all,.p-foot{display:none !important}
   .panel::after,.panel::before{display:none}
   .panel,.panel:hover{transform:none}
   .p-tab{box-shadow:none;border:1px solid var(--rule);border-top:0}
@@ -405,41 +412,38 @@ details.all:not([open]) summary .s{display:none}
 </head>
 <body>
 
-<header class="bar" id="bar" role="banner">
-  <div class="bar-brand">
-    <div class="bar-mark" aria-hidden="true">GSCG</div>
-    <div class="bar-title"><b>Spring 2026 Newsletter</b><span>Gonzaga Sport Consulting Group</span></div>
-  </div>
-  <div class="bar-actions">
-    <a class="bar-btn" href="../" title="Open the web version of this newsletter">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg><span class="t">Web version</span>
-    </a>
-    <button class="bar-btn primary" id="print-btn" type="button">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v7H6z"/></svg><span class="t">Print / Save PDF</span>
-    </button>
-  </div>
-</header>
+<main class="stack" id="doc">
 
-<!-- The menu rides along under the bar. Click any part to jump there. -->
-<nav class="menu" id="menu" aria-label="Sections">
-  <div class="menu-in" id="menu-in">
+<!-- Floating header tile. Same width as the pages, stays on top as you scroll. -->
+<header class="top" id="top" role="banner">
+  <div class="top-brand">
+    <div class="top-mark" aria-hidden="true">GSCG</div>
+    <div class="top-title"><b>Spring 2026</b><span>Newsletter</span></div>
+  </div>
+  <nav class="menu" id="menu-in" aria-label="Sections">
     <a href="#cover"><span class="n">00</span><span class="t">Cover</span></a>
     <a href="#opening"><span class="n">01</span><span class="t">Four firsts</span></a>
-    <a href="#numbers"><span class="n">02</span><span class="t">By the numbers</span></a>
-    <a href="#projects"><span class="n">03</span><span class="t">Five clients</span></a>
-    <a href="#trips"><span class="n">04</span><span class="t">Two trips</span></a>
+    <a href="#numbers"><span class="n">02</span><span class="t">Numbers</span></a>
+    <a href="#projects"><span class="n">03</span><span class="t">Clients</span></a>
+    <a href="#trips"><span class="n">04</span><span class="t">Trips</span></a>
     <a href="#highlights"><span class="n">05</span><span class="t">Highlights</span></a>
-    <a href="#reflections"><span class="n">06</span><span class="t">Student voices</span></a>
-    <a href="#thanks"><span class="n">07</span><span class="t">Thank you</span></a>
+    <a href="#reflections"><span class="n">06</span><span class="t">Voices</span></a>
+    <a href="#thanks"><span class="n">07</span><span class="t">Thanks</span></a>
     <a href="#involved"><span class="n">08</span><span class="t">Get involved</span></a>
+  </nav>
+  <div class="top-actions">
     <div class="arrows">
       <button id="prev" type="button" aria-label="Previous section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
       <button id="next" type="button" aria-label="Next section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
     </div>
+    <a class="bar-btn" href="../" title="Open the web version of this newsletter">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg><span class="t">Web</span>
+    </a>
+    <button class="bar-btn primary" id="print-btn" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v7H6z"/></svg><span class="t">Print / PDF</span>
+    </button>
   </div>
-</nav>
-
-<main class="stack" id="doc">
+</header>
 
 <!-- 00 · Cover -->
 <section class="panel cover" id="cover" data-title="Cover">
@@ -1018,9 +1022,10 @@ details.all:not([open]) summary .s{display:none}
 (function(){
   var sections = Array.prototype.slice.call(document.querySelectorAll('.panel')).filter(function(s){ return !s.dataset.skip; });
   var total = sections.length;
-  var bar = document.getElementById('bar'), menuIn = document.getElementById('menu-in');
+  var bar = document.getElementById('top'), menuIn = document.getElementById('menu-in');
   var menuLinks = Array.prototype.slice.call(document.querySelectorAll('.menu a'));
-  var current = -1, offset = 58 + 50 + 18;
+  var current = -1;
+  function offset(){ var h = bar.offsetHeight; document.documentElement.style.setProperty('--top', h + 'px'); return h + 30; }
 
   function update(){
     var mark = window.innerHeight * 0.35, best = 0;
@@ -1043,11 +1048,12 @@ details.all:not([open]) summary .s{display:none}
     bar.style.setProperty('--progress', Math.round(p * 1000) / 10 + '%');
   }
   window.addEventListener('scroll', update, { passive: true });
-  window.addEventListener('resize', update);
+  window.addEventListener('resize', function(){ offset(); update(); });
+  offset();
 
   function go(i){
     i = Math.max(0, Math.min(total - 1, i));
-    var y = sections[i].getBoundingClientRect().top + window.pageYOffset - offset;
+    var y = sections[i].getBoundingClientRect().top + window.pageYOffset - offset();
     window.scrollTo({ top: y, behavior: 'smooth' });
   }
   document.getElementById('prev').addEventListener('click', function(){ go(current - 1); });
