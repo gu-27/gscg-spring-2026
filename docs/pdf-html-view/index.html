@@ -66,14 +66,22 @@ ul,ol{list-style:none}
 .menu .arrows svg{width:15px;height:15px}
 
 /* ── The stack of panels ────────────────────────────────────── */
-.stack{max-width:1240px;margin:0 auto;padding:calc(var(--bar) + 30px) 20px 70px;display:flex;flex-direction:column;gap:30px}
+.stack{max-width:1240px;margin:0 auto;padding:calc(var(--bar) + 30px) 32px 90px 20px;display:flex;flex-direction:column;gap:44px}
 .panel{position:relative;background:var(--paper);border-radius:var(--radius);overflow:hidden;
-  box-shadow:0 1px 2px rgba(4,30,66,.08),0 26px 50px -28px rgba(4,30,66,.45),7px 7px 0 -3px #fff,7px 7px 0 -2px rgba(4,30,66,.14)}
+  box-shadow:0 1px 2px rgba(4,30,66,.08),0 30px 60px -28px rgba(4,30,66,.5),
+    12px 12px 0 -4px #fff,12px 12px 0 -3px rgba(4,30,66,.16),
+    24px 24px 0 -9px #F4F6FA,24px 24px 0 -8px rgba(4,30,66,.12);
+  transition:transform .25s ease,box-shadow .25s ease}
+.panel:hover{transform:translate(-3px,-3px);
+  box-shadow:0 1px 2px rgba(4,30,66,.08),0 36px 70px -28px rgba(4,30,66,.55),
+    15px 15px 0 -4px #fff,15px 15px 0 -3px rgba(4,30,66,.18),
+    30px 30px 0 -9px #F4F6FA,30px 30px 0 -8px rgba(4,30,66,.13)}
 /* folded corner, top right: the page came from a document */
-.panel::after{content:"";position:absolute;top:0;right:0;width:0;height:0;border-style:solid;border-width:0 30px 30px 0;border-color:var(--desk) var(--desk) rgba(255,255,255,.92) rgba(255,255,255,.92);filter:drop-shadow(-2px 2px 2px rgba(4,30,66,.18));z-index:3;pointer-events:none}
+.panel::after{content:"";position:absolute;top:0;right:0;width:0;height:0;border-style:solid;border-width:0 64px 64px 0;border-color:var(--desk) var(--desk) #fff #fff;filter:drop-shadow(-4px 4px 4px rgba(4,30,66,.28));z-index:3;pointer-events:none}
+.panel::before{content:"";position:absolute;top:0;right:0;width:64px;height:64px;background:linear-gradient(225deg,transparent 50%,rgba(4,30,66,.22) 50%,rgba(4,30,66,.05) 62%,transparent 70%);z-index:4;pointer-events:none}
 /* page tab hanging from the top edge */
-.p-tab{position:absolute;top:0;right:52px;z-index:3;background:#fff;color:var(--muted);font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:.4rem .75rem .35rem;border-radius:0 0 8px 8px;box-shadow:0 3px 8px rgba(4,30,66,.18);white-space:nowrap}
-.p-tab b{color:var(--red);font-family:var(--serif);font-size:.72rem;letter-spacing:0}
+.p-tab{position:absolute;top:0;right:84px;z-index:3;background:#fff;color:var(--muted);font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:.5rem .9rem .45rem;border-radius:0 0 10px 10px;box-shadow:0 4px 10px rgba(4,30,66,.2);white-space:nowrap}
+.p-tab b{color:var(--red);font-family:var(--serif);font-size:.8rem;letter-spacing:0}
 .p-head{padding:clamp(2rem,4vw,3rem) var(--gutter) clamp(1.6rem,3vw,2.4rem);display:grid;grid-template-columns:auto 1fr;gap:1.4rem;align-items:start;position:relative;overflow:hidden}
 .p-head.navy{background:var(--navy);color:#fff}
 .p-head.navy::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 50% 90% at 95% 0%,rgba(200,16,46,.35),transparent 60%);pointer-events:none}
@@ -352,7 +360,8 @@ details.all:not([open]) summary .s{display:none}
 @media print{
   html,body{background:#fff;font-size:12px}
   .bar,.menu,.lb,details.more,details.all,.p-foot{display:none !important}
-  .panel::after{display:none}
+  .panel::after,.panel::before{display:none}
+  .panel,.panel:hover{transform:none}
   .p-tab{box-shadow:none;border:1px solid var(--rule);border-top:0}
   .print-only{display:block;font-size:.82rem;color:var(--muted);margin-top:.8rem}
   .stack{display:block;padding:0;max-width:none}
