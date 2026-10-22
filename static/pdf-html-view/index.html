@@ -137,12 +137,15 @@ details.more .text li::before{content:"";position:absolute;left:0;top:.6em;width
 .cover-photo figcaption{position:absolute;left:0;right:0;bottom:0;padding:2rem var(--gutter) 1rem;font-size:.9rem;color:#fff;background:linear-gradient(transparent,rgba(4,30,66,.75))}
 .cover-photo figcaption a{color:#fff;border-bottom:1px solid rgba(255,255,255,.5)}
 .contents{display:grid;grid-template-columns:repeat(4,1fr);gap:.9rem}
-.contents h3{font-family:var(--sans);font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--red);grid-column:1/-1;margin-bottom:.1rem}
+.contents h3{font-family:var(--sans);font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--red);grid-column:1/-1;margin-bottom:.1rem;display:flex;align-items:baseline;gap:.9rem;flex-wrap:wrap}
+.contents h3 .hint{font-size:.84rem;font-weight:500;letter-spacing:0;text-transform:none;color:var(--muted)}
 .contents a{display:block;padding:1.1rem 1.2rem 1.2rem;border-radius:12px;background:var(--tint);color:var(--ink);transition:transform .15s,box-shadow .15s}
 .contents a:hover{text-decoration:none;transform:translateY(-2px);box-shadow:0 14px 30px -18px rgba(4,30,66,.45)}
 .contents a .n{font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--red);line-height:1;display:block;margin-bottom:.5rem}
 .contents a b{display:block;font-size:1.08rem;font-weight:600;color:var(--navy);line-height:1.25}
 .contents a span{display:block;font-size:.84rem;color:var(--muted);margin-top:.3rem;line-height:1.4}
+.contents a span.go{color:var(--red-2);font-weight:700;font-size:.78rem;margin-top:.6rem;opacity:0;transition:opacity .15s}
+.contents a:hover span.go{opacity:1}
 
 /* ── 01 Four firsts ─────────────────────────────────────────── */
 .firsts{display:grid;grid-template-columns:1.2fr 1fr;gap:2.4rem;align-items:start}
@@ -429,15 +432,15 @@ details.all:not([open]) summary .s{display:none}
   </figure>
   <div class="p-body">
     <nav class="contents" aria-label="In this issue">
-      <h3>In this issue</h3>
-      <a href="#opening"><span class="n">01</span><b>Four firsts</b><span>What made this spring different</span></a>
-      <a href="#numbers"><span class="n">02</span><b>By the numbers</b><span>Six figures that tell the story</span></a>
-      <a href="#projects"><span class="n">03</span><b>Five clients</b><span>Mariners, Zephyr, Blazers, Informatics, Sunshine Club</span></a>
-      <a href="#trips"><span class="n">04</span><b>Two trips</b><span>Portland and Seattle</span></a>
-      <a href="#highlights"><span class="n">05</span><b>Highlights</b><span>Case competition, the Board, Associates, AI, the social</span></a>
-      <a href="#reflections"><span class="n">06</span><b>Student voices</b><span>In their own words</span></a>
-      <a href="#thanks"><span class="n">07</span><b>Thank you</b><span>The people who showed up</span></a>
-      <a href="#involved"><span class="n">08</span><b>Get involved</b><span>Four ways to help</span></a>
+      <h3>In this issue <span class="hint">Click any item to jump to it</span></h3>
+      <a href="#opening"><span class="n">01</span><b>Four firsts</b><span>What made this spring different</span><span class="go">Jump to this panel</span></a>
+      <a href="#numbers"><span class="n">02</span><b>By the numbers</b><span>Six figures that tell the story</span><span class="go">Jump to this panel</span></a>
+      <a href="#projects"><span class="n">03</span><b>Five clients</b><span>Mariners, Zephyr, Blazers, Informatics, Sunshine Club</span><span class="go">Jump to this panel</span></a>
+      <a href="#trips"><span class="n">04</span><b>Two trips</b><span>Portland and Seattle</span><span class="go">Jump to this panel</span></a>
+      <a href="#highlights"><span class="n">05</span><b>Highlights</b><span>Case competition, the Board, Associates, AI, the social</span><span class="go">Jump to this panel</span></a>
+      <a href="#reflections"><span class="n">06</span><b>Student voices</b><span>In their own words</span><span class="go">Jump to this panel</span></a>
+      <a href="#thanks"><span class="n">07</span><b>Thank you</b><span>The people who showed up</span><span class="go">Jump to this panel</span></a>
+      <a href="#involved"><span class="n">08</span><b>Get involved</b><span>Four ways to help</span><span class="go">Jump to this panel</span></a>
     </nav>
   </div>
   <div class="p-foot"><span>GSCG · Spring 2026 · Cover</span><a class="next" href="#opening">Start reading <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a></div>
