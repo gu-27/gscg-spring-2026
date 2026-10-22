@@ -67,7 +67,13 @@ ul,ol{list-style:none}
 
 /* ── The stack of panels ────────────────────────────────────── */
 .stack{max-width:1240px;margin:0 auto;padding:calc(var(--bar) + 30px) 20px 70px;display:flex;flex-direction:column;gap:30px}
-.panel{background:var(--paper);border-radius:var(--radius);overflow:hidden;box-shadow:0 1px 2px rgba(4,30,66,.08),0 26px 50px -28px rgba(4,30,66,.45)}
+.panel{position:relative;background:var(--paper);border-radius:var(--radius);overflow:hidden;
+  box-shadow:0 1px 2px rgba(4,30,66,.08),0 26px 50px -28px rgba(4,30,66,.45),7px 7px 0 -3px #fff,7px 7px 0 -2px rgba(4,30,66,.14)}
+/* folded corner, top right: the page came from a document */
+.panel::after{content:"";position:absolute;top:0;right:0;width:0;height:0;border-style:solid;border-width:0 30px 30px 0;border-color:var(--desk) var(--desk) rgba(255,255,255,.92) rgba(255,255,255,.92);filter:drop-shadow(-2px 2px 2px rgba(4,30,66,.18));z-index:3;pointer-events:none}
+/* page tab hanging from the top edge */
+.p-tab{position:absolute;top:0;right:52px;z-index:3;background:#fff;color:var(--muted);font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:.4rem .75rem .35rem;border-radius:0 0 8px 8px;box-shadow:0 3px 8px rgba(4,30,66,.18);white-space:nowrap}
+.p-tab b{color:var(--red);font-family:var(--serif);font-size:.72rem;letter-spacing:0}
 .p-head{padding:clamp(2rem,4vw,3rem) var(--gutter) clamp(1.6rem,3vw,2.4rem);display:grid;grid-template-columns:auto 1fr;gap:1.4rem;align-items:start;position:relative;overflow:hidden}
 .p-head.navy{background:var(--navy);color:#fff}
 .p-head.navy::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 50% 90% at 95% 0%,rgba(200,16,46,.35),transparent 60%);pointer-events:none}
@@ -90,6 +96,15 @@ ul,ol{list-style:none}
 .p-body.navy{background:var(--navy);color:#fff}
 .p-body.tint{background:var(--tint)}
 .p-foot{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.9rem var(--gutter);border-top:1px solid var(--rule);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);background:#fff}
+.p-foot .right{display:flex;align-items:center;gap:1.1rem;flex-wrap:wrap}
+.p-foot .expand{display:inline-flex;align-items:center;gap:.45rem;font-size:.8rem;font-weight:700;letter-spacing:.02em;text-transform:none;color:var(--navy);background:var(--tint);padding:.4rem .85rem .4rem .6rem;border-radius:999px;transition:background .15s}
+.p-foot .expand:hover{background:var(--tint-2)}
+.p-foot .expand::before{content:"+";display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;background:var(--red);color:#fff;font-size:.85rem;line-height:1}
+.p-foot .expand.is-open::before{content:"–"}
+.panel.dark .p-foot .expand{background:rgba(255,255,255,.1);color:#fff}
+.p-foot .expand .s{display:none}
+.p-foot .expand.is-open .s{display:inline}
+.p-foot .expand.is-open .l{display:none}
 .p-foot .next{display:inline-flex;align-items:center;gap:.45rem;font-size:.84rem;font-weight:700;letter-spacing:.02em;text-transform:none;color:var(--red-2)}
 .p-foot .next svg{width:14px;height:14px}
 .panel.dark .p-foot{background:var(--navy);border-top-color:rgba(255,255,255,.15);color:rgba(255,255,255,.5)}
@@ -337,6 +352,8 @@ details.all:not([open]) summary .s{display:none}
 @media print{
   html,body{background:#fff;font-size:12px}
   .bar,.menu,.lb,details.more,details.all,.p-foot{display:none !important}
+  .panel::after{display:none}
+  .p-tab{box-shadow:none;border:1px solid var(--rule);border-top:0}
   .print-only{display:block;font-size:.82rem;color:var(--muted);margin-top:.8rem}
   .stack{display:block;padding:0;max-width:none}
   .panel{box-shadow:none;border:1px solid var(--rule);break-before:page;break-inside:avoid;margin:0;border-radius:12px;overflow:visible}
@@ -417,6 +434,7 @@ details.all:not([open]) summary .s{display:none}
 
 <!-- 00 · Cover -->
 <section class="panel cover" id="cover" data-title="Cover">
+  <div class="p-tab">Spring 2026 · <b>Cover</b></div>
   <div class="p-head navy">
     <div class="mast">
       <img src="img/gscg-mark.png" alt="Gonzaga Sport Consulting Group">
@@ -443,11 +461,12 @@ details.all:not([open]) summary .s{display:none}
       <a href="#involved"><span class="n">08</span><b>Get involved</b><span>Four ways to help</span><span class="go">Jump to this panel</span></a>
     </nav>
   </div>
-  <div class="p-foot"><span>GSCG · Spring 2026 · Cover</span><a class="next" href="#opening">Start reading <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a></div>
+  <div class="p-foot"><span>GSCG · Spring 2026 · Cover</span><span class="right"><button class="expand" type="button" hidden><span class="l">Expand this page</span><span class="s">Collapse</span></button><a class="next" href="#opening">Start reading <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a></span></div>
 </section>
 
 <!-- 01 · Four firsts -->
 <section class="panel" id="opening" data-title="Four firsts">
+  <div class="p-tab">Snapshot · <b>Page 01</b></div>
   <div class="p-head navy">
     <div class="num">01</div>
     <div>
@@ -482,11 +501,12 @@ details.all:not([open]) summary .s{display:none}
       </div>
     </div>
   </div>
-  <div class="p-foot"><span>01 of 08 · Four firsts</span><a class="next" href="#numbers">Next: By the numbers <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a></div>
+  <div class="p-foot"><span>01 of 08 · Four firsts</span><span class="right"><button class="expand" type="button" hidden><span class="l">Expand this page</span><span class="s">Collapse</span></button><a class="next" href="#numbers">Next: By the numbers <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a></span></div>
 </section>
 
 <!-- 02 · Numbers -->
 <section class="panel dark no-break" id="numbers" data-title="By the numbers">
+  <div class="p-tab">Snapshot · <b>Page 02</b></div>
   <div class="p-head red">
     <div class="num">02</div>
     <div>
@@ -505,11 +525,12 @@ details.all:not([open]) summary .s{display:none}
       <a class="stat" href="#reflections"><b>57</b><span>Students served</span><em>Hear from them</em></a>
     </div>
   </div>
-  <div class="p-foot"><span>02 of 08 · By the numbers</span><a class="next" href="#projects">Next: Five clients <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a></div>
+  <div class="p-foot"><span>02 of 08 · By the numbers</span><span class="right"><button class="expand" type="button" hidden><span class="l">Expand this page</span><span class="s">Collapse</span></button><a class="next" href="#projects">Next: Five clients <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a></span></div>
 </section>
 
 <!-- 03 · Clients -->
 <section class="panel" id="projects" data-title="Five clients">
+  <div class="p-tab">Snapshot · <b>Page 03</b></div>
   <div class="p-head navy">
     <div class="num">03</div>
     <div>
@@ -622,7 +643,7 @@ details.all:not([open]) summary .s{display:none}
       </article>
     </div>
   </div>
-  <div class="p-foot"><span>03 of 08 · Five clients</span><a class="next" href="#trips">Next: Two trips <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a></div>
+  <div class="p-foot"><span>03 of 08 · Five clients</span><span class="right"><button class="expand" type="button" hidden><span class="l">Expand this page</span><span class="s">Collapse</span></button><a class="next" href="#trips">Next: Two trips <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a></span></div>
 </section>
 
 <!-- Quote band -->
@@ -644,6 +665,7 @@ details.all:not([open]) summary .s{display:none}
 
 <!-- 04 · Trips -->
 <section class="panel" id="trips" data-title="Two trips">
+  <div class="p-tab">Snapshot · <b>Page 04</b></div>
   <div class="p-head tint">
     <div class="num">04</div>
     <div>
@@ -712,11 +734,12 @@ details.all:not([open]) summary .s{display:none}
       </div>
     </div>
   </div>
-  <div class="p-foot"><span>04 of 08 · Two trips</span><a class="next" href="#highlights">Next: Highlights <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a></div>
+  <div class="p-foot"><span>04 of 08 · Two trips</span><span class="right"><button class="expand" type="button" hidden><span class="l">Expand this page</span><span class="s">Collapse</span></button><a class="next" href="#highlights">Next: Highlights <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a></span></div>
 </section>
 
 <!-- 05 · Highlights -->
 <section class="panel" id="highlights" data-title="Highlights">
+  <div class="p-tab">Snapshot · <b>Page 05</b></div>
   <div class="p-head navy">
     <div class="num">05</div>
     <div>
@@ -790,11 +813,12 @@ details.all:not([open]) summary .s{display:none}
       </article>
     </div>
   </div>
-  <div class="p-foot"><span>05 of 08 · Highlights</span><a class="next" href="#reflections">Next: Student voices <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a></div>
+  <div class="p-foot"><span>05 of 08 · Highlights</span><span class="right"><button class="expand" type="button" hidden><span class="l">Expand this page</span><span class="s">Collapse</span></button><a class="next" href="#reflections">Next: Student voices <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a></span></div>
 </section>
 
 <!-- 06 · Voices -->
 <section class="panel" id="reflections" data-title="Student voices">
+  <div class="p-tab">Snapshot · <b>Page 06</b></div>
   <div class="p-head red">
     <div class="num">06</div>
     <div>
@@ -839,11 +863,12 @@ details.all:not([open]) summary .s{display:none}
       <a class="chip ext" href="https://gu-27.github.io/GSCG-ThankYou-Supporters-2026/" target="_blank" rel="noopener">Trip reflections on the thank-you site</a>
     </div>
   </div>
-  <div class="p-foot"><span>06 of 08 · Student voices</span><a class="next" href="#thanks">Next: Thank you <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a></div>
+  <div class="p-foot"><span>06 of 08 · Student voices</span><span class="right"><button class="expand" type="button" hidden><span class="l">Expand this page</span><span class="s">Collapse</span></button><a class="next" href="#thanks">Next: Thank you <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a></span></div>
 </section>
 
 <!-- 07 · Thank you -->
 <section class="panel" id="thanks" data-title="Thank you">
+  <div class="p-tab">Snapshot · <b>Page 07</b></div>
   <div class="p-head tint">
     <div class="num">07</div>
     <div>
@@ -905,11 +930,12 @@ details.all:not([open]) summary .s{display:none}
       </div>
     </div>
   </div>
-  <div class="p-foot"><span>07 of 08 · Thank you</span><a class="next" href="#involved">Next: Get involved <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a></div>
+  <div class="p-foot"><span>07 of 08 · Thank you</span><span class="right"><button class="expand" type="button" hidden><span class="l">Expand this page</span><span class="s">Collapse</span></button><a class="next" href="#involved">Next: Get involved <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a></span></div>
 </section>
 
 <!-- 08 · Get involved -->
 <section class="panel dark" id="involved" data-title="Get involved">
+  <div class="p-tab">Snapshot · <b>Page 08</b></div>
   <div class="p-head navy">
     <div class="num">08</div>
     <div>
@@ -968,7 +994,7 @@ details.all:not([open]) summary .s{display:none}
     </div>
     <p class="colophon"><b>About this newsletter.</b> One web page, eight panels. Every photo enlarges. Every link jumps. The full stories open in place. Print / Save PDF at the top gives you a US Letter copy, one panel per page, with page numbers. © 2026 Gonzaga Sport Consulting Group.</p>
   </div>
-  <div class="p-foot"><span>08 of 08 · Get involved</span><a class="next" href="#cover">Back to the cover <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a></div>
+  <div class="p-foot"><span>08 of 08 · Get involved</span><span class="right"><button class="expand" type="button" hidden><span class="l">Expand this page</span><span class="s">Collapse</span></button><a class="next" href="#cover">Back to the cover <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a></span></div>
 </section>
 
 </main>
@@ -1025,6 +1051,21 @@ details.all:not([open]) summary .s{display:none}
   });
 
   document.getElementById('print-btn').addEventListener('click', function(){ window.print(); });
+
+  // "Expand this page": open every fold inside that panel, or close them all.
+  Array.prototype.forEach.call(document.querySelectorAll('.panel'), function(panel){
+    var btn = panel.querySelector('.p-foot .expand'), folds = panel.querySelectorAll('details');
+    if (!btn) return;
+    if (!folds.length){ btn.remove(); return; }
+    btn.hidden = false;
+    function sync(){ var open = Array.prototype.every.call(folds, function(d){ return d.open; }); btn.classList.toggle('is-open', open); }
+    btn.addEventListener('click', function(){
+      var open = !btn.classList.contains('is-open');
+      Array.prototype.forEach.call(folds, function(d){ d.open = open; });
+      sync();
+    });
+    Array.prototype.forEach.call(folds, function(d){ d.addEventListener('toggle', sync); });
+  });
 
   var lb = document.getElementById('lb'), lbImg = lb.querySelector('img'), lbCap = lb.querySelector('figcaption');
   function openLb(img){
